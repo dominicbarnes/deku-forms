@@ -1,0 +1,10 @@
+{
+  "name": "dominicbarnes/deku-form",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "dependencies": {
+    "chjj-marked": "^0.3.5",
+    "dekujs/virtual-element": "^1.1.1",
+    "dominicbarnes/form-serialize": "^0.4.1"
+  }
+}

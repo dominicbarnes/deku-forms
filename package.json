@@ -1,0 +1,23 @@
+{
+  "name": "deku-form",
+  "version": "0.0.0",
+  "description": "A deku component for working with forms",
+  "repository": "dominicbarnes/deku-form",
+  "dependencies": {},
+  "devDependencies": {
+    "@dominicbarnes/eslint-config": "0.0.3",
+    "@dominicbarnes/eslint-config-browser": "0.0.3",
+    "@dominicbarnes/eslint-config-deku": "0.0.4",
+    "@dominicbarnes/eslint-config-node": "0.0.1",
+    "@dominicbarnes/eslint-config-test": "0.0.2",
+    "duo-babel": "^6.0.0",
+    "duo-tester": "^0.1.1",
+    "eslint": "^1.1.0",
+    "eslint-plugin-react": "^3.2.2"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "duo-tester browser -u ./support/duo-plugins.js",
+    "test": "duo-tester phantomjs -u ./support/duo-plugins.js"
+  }
+}
