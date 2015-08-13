@@ -2,5 +2,5 @@
 var babel = require('duo-babel');
 
 module.exports = [
-  babel({ jsxPragma: 'dom' })
+  babel({ jsxPragma: 'dom', onlyLocals: true })
 ];

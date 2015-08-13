@@ -1,5 +1,8 @@
 
-export default function generate(component = {}) {
+import { render, tree } from 'dekujs/deku';
+
+
+export function component(component = {}) {
   let { props, state } = component;
   if (!props) props = {};
   if (!state) state = {};
@@ -16,4 +19,20 @@ export function normalizeChildren(children = []) {
     if (typeof child === 'string') return { type: 'text', data: child };
     return child;
   });
+}
+
+export function mount(node) {
+  let element = document.createElement('div');
+  document.body.appendChild(element);
+
+  let app = tree(node);
+  let renderer = render(app, element);
+
+  return {
+    element,
+    unmount() {
+      renderer.remove();
+      document.body.removeChild(element);
+    }
+  };
 }

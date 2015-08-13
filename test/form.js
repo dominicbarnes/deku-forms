@@ -1,7 +1,7 @@
 
 import dom from 'dekujs/virtual-element';
 import { render, tree } from 'dekujs/deku';
-import component from './util/component';
+import { component } from './util/component';
 import assert from './assertions';
 import { Form } from '../lib';
 
