@@ -78,6 +78,8 @@ export function hasChildren(node, children) {
 
   if (typeof children === 'function') {
     assert(list.every(children), 'some of the children failed the test fn');
+  } else if (typeof children === 'number') {
+    assert.strictEqual(list.length, children);
   } else {
     if (!Array.isArray(children)) children = [ children ]; // normalize
 

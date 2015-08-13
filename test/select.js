@@ -90,5 +90,23 @@ describe('Select', function () {
         trigger(app.element.querySelector('select'), 'change');
       });
     });
+
+    describe('.placeholder', function () {
+      it('should prefix an option', function () {
+        let options = [ 'a', 'b', 'c' ];
+        let props = { options, placeholder: 'placeholder' };
+        let node = Select.render(component({ props }), noop);
+        assert.vnode.hasChildren(node, 4);
+      });
+
+      it('should create an option with no value', function () {
+        let options = [ 'a', 'b', 'c' ];
+        let props = { options, placeholder: 'placeholder' };
+        let node = Select.render(component({ props }), noop);
+        var placeholder = node.children[0];
+        assert.vnode.hasAttribute(placeholder, 'value', undefined);
+        assert.vnode.hasChildren(placeholder, 'placeholder');
+      });
+    });
   });
 });

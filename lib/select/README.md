@@ -22,12 +22,41 @@ These are standard HTML attributes, so refer to official documentation there:
  * `name`
  * `size`
 
+### options
+
+Determines the list of `<option>` elements that give the user the options they choose from.
+
+This can be a simple array of strings, which means the same string will be used as both the
+`value` **and** the `label`.
+
+```js
+[ 'red', 'green', 'blue' ]
+```
+
+The most flexible option is to use an array of objects: (each object should have both a `label`
+and `value` property)
+
+```js
+[
+  { label: 'red', value: '#ff0000' },
+  { label: 'green', value: '#00ff00' },
+  { label: 'blue', value: '#0000ff' }
+]
+```
+
 ### value
 
-Sets the selected option based on it's own `value` attribute.
+When passed, this will be compared with the `options` to determine which element should be marked
+as `selected`. (must pass a strict comparison)
 
-In other words, it does *not* match based on the label, unless you are using the simple array,
-which uses the same value for both the label *and* the value.
+### placeholder
+
+Since the `<select>` element does not support the `placeholder` attribute, this one behaves a
+little differently. When used, this prepends an `<option>` to the list of options that will
+have an empty `value`, but uses the placeholder text as the `label`.
+
+This has the effect of acting like a placeholder where no value has previously been selected.
+(otherwise, the first `<option>` is selected by default)
 
 ### Validation
 
