@@ -5,37 +5,30 @@ import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
 import { component, mount } from './util/component';
-import { Field, InputField } from '../lib';
+import { Field, CheckboxField } from '../lib';
 
-describe('InputField', function () {
+describe('CheckboxField', function () {
   let noop = () => {};
 
   it('should return a Field component', function () {
-    let node = InputField.render(component(), noop);
+    let node = CheckboxField.render(component(), noop);
     assert.vnode.isElement(node, Field);
   });
 
-  it('should have a plain input as the control', function () {
-    let node = InputField.render(component(), noop);
-    let input = node.children[0];
+  it('should have a label with a nested checkbox as the control', function () {
+    let props = { label: 'a' };
+    let node = CheckboxField.render(component({ props }), noop);
+    let control = node.children[0];
+    assert.vnode.isElement(control, 'label');
+    let [ input, label ] = control.children;
     assert.vnode.isElement(input, 'input');
+    assert.strictEqual(label, 'a');
   });
 
   describe('with props', function () {
     let inputAttrs = {
-      disabled: true,
-      max: 50,
-      maxlength: 50,
-      min: 2,
-      minlength: 2,
       name: 'test',
-      pattern: '\d+',
-      placeholder: 'test',
-      readonly: true,
       required: true,
-      size: 2,
-      step: 2,
-      type: 'number',
       value: 'hello world'
     };
 
@@ -43,46 +36,34 @@ describe('InputField', function () {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the input`, function () {
           let props = { [attr]: value };
-          let node = InputField.render(component({ props }), noop);
-          let input = node.children[0];
+          let node = CheckboxField.render(component({ props }), noop);
+          let input = node.children[0].children[0];
           assert.vnode.hasAttribute(input, attr, value);
         });
       });
     });
 
     let fieldAttrs = {
-      hint: 'a',
-      label: 'b'
+      hint: 'a'
     };
 
     each(fieldAttrs, function (attr, value) {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };
-          let node = InputField.render(component({ props }), noop);
+          let node = CheckboxField.render(component({ props }), noop);
           assert.vnode.hasAttribute(node, attr, value);
         });
       });
     });
 
-    describe('.id', function () {
-      it('should add the id to the input', function () {
-        let props = { id: 'test' };
-        let node = InputField.render(component({ props }), noop);
-        let input = node.children[0];
-        assert.vnode.hasAttribute(input, 'id', 'test');
-      });
-
-      it('should add the id to the Field', function () {
-        let props = { id: 'test' };
-        let node = InputField.render(component({ props }), noop);
-        assert.vnode.hasAttribute(node, 'id', 'test');
-      });
+    describe('.label', function () {
+      // TODO
     });
 
     describe('.onChange(e)', function () {
       it('should fire the event handler', function (done) {
-        let app = mount(<InputField onChange={handle} />);
+        let app = mount(<CheckboxField onChange={handle} />);
 
         function handle(e) {
           assert.strictEqual(e.type, 'change');
@@ -93,27 +74,13 @@ describe('InputField', function () {
         trigger(app.element.querySelector('input'), 'change');
       });
     });
-
-    describe('.onInput(e)', function () {
-      it('should fire the event handler', function (done) {
-        let app = mount(<InputField onInput={handle} />);
-
-        function handle(e) {
-          assert.strictEqual(e.type, 'input');
-          app.unmount();
-          done();
-        }
-
-        trigger(app.element.querySelector('input'), 'input');
-      });
-    });
   });
 
   describe('with state', function () {
     describe('.error', function () {
       it('should add the error to the Field', function () {
         let state = { error: 'test' };
-        let node = InputField.render(component({ state }), noop);
+        let node = CheckboxField.render(component({ state }), noop);
         assert.vnode.hasAttribute(node, 'error', 'test');
       });
     });
@@ -121,8 +88,9 @@ describe('InputField', function () {
 
   describe('interaction', function () {
     it('should add validation error messages to the Field', function (done) {
-      let app = mount(<InputField name="name" required />);
-      trigger(app.element.querySelector('input'), 'input'); // still empty, will fail validation
+      let app = mount(<CheckboxField name="name" required />);
+      let checkbox = app.element.querySelector('input');
+      trigger(checkbox, 'change'); // still unchecked, will fail validation
 
       nextTick(function () {
         assert(app.element.querySelector('.FormField-error'));
@@ -132,13 +100,13 @@ describe('InputField', function () {
     });
 
     it('should remove the error messages after being corrected', function (done) {
-      let app = mount(<InputField name="name" required />);
-      let input = app.element.querySelector('input');
+      let app = mount(<CheckboxField name="name" required />);
+      let checkbox = app.element.querySelector('input');
+      trigger(checkbox, 'change'); // still unchecked, will fail validation
 
-      trigger(input, 'input'); // still empty, will fail validation
       nextTick(function () {
-        input.value = 'hello world';
-        trigger(input, 'input'); // now filled, will pass
+        checkbox.checked = true;
+        trigger(checkbox, 'change'); // now filled, will pass
 
         nextTick(function () {
           assert(!app.element.querySelector('.FormField-error'));

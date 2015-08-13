@@ -90,7 +90,7 @@ describe('TextField', function () {
 
     each(fieldAttrs, function (attr, value) {
       describe(`.${attr}`, function () {
-        it(`should add the attribute to the input`, function () {
+        it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };
           let node = TextField.render(component({ props }), noop);
           assert.vnode.hasAttribute(node, attr, value);
