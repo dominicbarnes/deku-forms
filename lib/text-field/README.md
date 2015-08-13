@@ -59,7 +59,7 @@ Check out the main README for more information about form validation.
 
 ### Field
 
-These attributes are used directly by the [`Field`](field) component:
+These attributes are used directly by the [`Field`](../field) component:
 
  * `hint`
  * `id`
@@ -76,4 +76,4 @@ so refer to official documentation there:
 
 ## CSS Hooks
 
-Check the [`Field`](field) component for more information.
+Check the [`Field`](../field) component for more information.
