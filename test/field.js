@@ -4,16 +4,7 @@ import assert from './assertions';
 import { Field } from '../lib';
 
 describe('Field', function () {
-  var main = document.createElement('main');
   let noop = () => {};
-
-  before(function () {
-    document.body.appendChild(main);
-  });
-
-  after(function () {
-    document.body.removeChild(main);
-  });
 
   it('should return a div with right classes', function () {
     var node = Field.render(component(), noop);

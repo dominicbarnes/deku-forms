@@ -1,21 +1,12 @@
 
 import dom from 'dekujs/virtual-element';
-import { render, tree } from 'dekujs/deku';
-import { component } from './util/component';
+import trigger from 'adamsanderson/trigger-event';
+import { component, mount } from './util/component';
 import assert from './assertions';
 import { Form } from '../lib';
 
 describe('Form', function () {
-  var main = document.createElement('main');
   let noop = () => {};
-
-  before(function () {
-    document.body.appendChild(main);
-  });
-
-  after(function () {
-    document.body.removeChild(main);
-  });
 
   it('should return a form element', function () {
     var node = Form.render(component(), noop);
@@ -31,32 +22,29 @@ describe('Form', function () {
   describe('with props', function () {
     describe('.onSubmit(data, form)', function () {
       it('should fire when the form is submitted', function (done) {
-        let app = tree(
+        let app = mount(
           <Form onSubmit={handle}>
             <button type="submit">Submit</button>
           </Form>
         );
-        render(app, main);
 
         function handle(data, form) {
           assert.deepEqual(data, {});
-          assert.strictEqual(form, main.firstChild);
+          assert.strictEqual(form, app.element.firstChild);
           app.unmount();
           done();
         }
 
-        // ugh ... form.submit() does not trigger events
-        main.firstChild.lastChild.click();
+        trigger(app.element.firstChild, 'submit');
       });
 
       it('should serialize the form data is submitted', function (done) {
-        let app = tree(
+        let app = mount(
           <Form onSubmit={handle}>
             <input name="hello" type="hidden" value="world" />
             <button type="submit">Submit</button>
           </Form>
         );
-        render(app, main);
 
         function handle(data) {
           assert.deepEqual(data, { hello: 'world' });
@@ -64,28 +52,23 @@ describe('Form', function () {
           done();
         }
 
-        // ugh ... form.submit() does not trigger events
-        main.firstChild.lastChild.click();
+        trigger(app.element.firstChild, 'submit');
       });
 
       it('should only fire when validation passes', function (done) {
-        this.slow(500);
-
-        let app = tree(
+        let app = mount(
           <Form onSubmit={handle}>
             <input name="hello" required type="text" />
             <button type="submit">Submit</button>
           </Form>
         );
-        render(app, main);
 
         function handle() {
           app.unmount();
           done(new Error('this should not have happened'));
         }
 
-        // ugh ... form.submit() does not trigger events
-        main.firstChild.lastChild.click();
+        trigger(app.element.firstChild, 'submit');
 
         // FIXME: add an `onInvalid` event handler?
         setTimeout(done, 100); // assume it didn't fire the handler if we make it 100ms
@@ -94,13 +77,12 @@ describe('Form', function () {
 
     describe('.transform(...)', function () {
       it('should serialize the form data is submitted', function (done) {
-        let app = tree(
+        let app = mount(
           <Form onSubmit={handle} transform={transform}>
             <input name="hello" type="hidden" value="world" />
             <button type="submit">Submit</button>
           </Form>
         );
-        render(app, main);
 
         function handle(data) {
           assert.deepEqual(data, { hello: 'hello' });
@@ -112,8 +94,7 @@ describe('Form', function () {
           return key;
         }
 
-        // ugh ... form.submit() does not trigger events
-        main.firstChild.lastChild.click();
+        trigger(app.element.firstChild, 'submit');
       });
     });
   });

@@ -1,6 +1,5 @@
 
 import each from 'component/each';
-import nextTick from 'timoxley/next-tick';
 import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';

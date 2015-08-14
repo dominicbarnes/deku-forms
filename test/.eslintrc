@@ -2,6 +2,7 @@
   "extends": "@dominicbarnes/test",
   "rules": {
     "func-style": 0,
-    "no-invalid-this": 0
+    "no-invalid-this": 0,
+    "no-undefined": 0
   }
 }
