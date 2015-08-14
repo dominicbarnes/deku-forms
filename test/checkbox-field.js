@@ -27,6 +27,7 @@ describe('CheckboxField', function () {
 
   describe('with props', function () {
     let inputAttrs = {
+      checked: true,
       name: 'test',
       required: true,
       value: 'hello world'
