@@ -17,6 +17,7 @@
 These attributes are applied directly to the `<input>` and are used by it directly. These
 are standard HTML attributes, so refer to official documentation there:
 
+ * `checked`
  * `name`
  * `value`
 
