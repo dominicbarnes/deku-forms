@@ -1,4 +1,10 @@
 
+0.0.2 / 2015-08-17
+==================
+
+  * meta: using jsx pragma instead of babelrc (until babel/babel#2214 is resolved)
+  * checkbox-field: adding `checked` attribute
+
 0.0.1 / 2015-08-13
 ==================
 
