@@ -7,14 +7,14 @@ import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
 import { component, mount } from './util/component';
-import { Field, Select, SelectField } from '../lib';
+import { FormField, Select, SelectField } from '../lib';
 
 describe('SelectField', function () {
   let noop = () => {};
 
-  it('should return a Field component', function () {
+  it('should return a FormField component', function () {
     let node = SelectField.render(component(), noop);
-    assert.vnode.isElement(node, Field);
+    assert.vnode.isElement(node, FormField);
   });
 
   it('should have a Select component as the control', function () {

@@ -40,7 +40,7 @@ export function render() {
 ### Core
 
  - [Form](lib/form)
- - [Field](lib/field)
+ - [FormField](lib/field)
  - [Select](lib/select)
 
 ### Field Types

@@ -7,14 +7,14 @@ import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
 import { component, mount } from './util/component';
-import { Field, CheckboxField } from '../lib';
+import { FormField, CheckboxField } from '../lib';
 
 describe('CheckboxField', function () {
   let noop = () => {};
 
-  it('should return a Field component', function () {
+  it('should return a FormField component', function () {
     let node = CheckboxField.render(component(), noop);
-    assert.vnode.isElement(node, Field);
+    assert.vnode.isElement(node, FormField);
   });
 
   it('should have a label with a nested checkbox as the control', function () {

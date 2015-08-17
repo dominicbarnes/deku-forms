@@ -3,20 +3,20 @@
 
 import { component } from './util/component';
 import assert from './assertions';
-import { Field } from '../lib';
+import { FormField } from '../lib';
 
-describe('Field', function () {
+describe('FormField', function () {
   let noop = () => {};
 
   it('should return a div with right classes', function () {
-    var node = Field.render(component(), noop);
+    var node = FormField.render(component(), noop);
     assert.vnode.isElement(node, 'div');
     assert.vnode.hasClass(node, 'FormField');
     assert.vnode.notHasClass(node, 'has-error');
   });
 
   it('should have the right children elements', function () {
-    var node = Field.render(component(), noop);
+    var node = FormField.render(component(), noop);
     assert.strictEqual(node.children.length, 4);
     let [ label, controls, error, hint ] = node.children;
     assert.strictEqual(label, null);
@@ -30,7 +30,7 @@ describe('Field', function () {
     describe('.label', function () {
       it('should create a label element', function () {
         let props = { label: 'a' };
-        var node = Field.render(component({ props }), noop);
+        var node = FormField.render(component({ props }), noop);
         let label = node.children[0];
         assert.vnode.isElement(label, 'label');
         assert.vnode.hasClass(label, 'FormField-label');
@@ -41,7 +41,7 @@ describe('Field', function () {
     describe('.id', function () {
       it('should add a for attribute to the label element', function () {
         let props = { label: 'a', id: 'b' };
-        var node = Field.render(component({ props }), noop);
+        var node = FormField.render(component({ props }), noop);
         let label = node.children[0];
         assert.vnode.hasAttribute(label, 'for', 'b');
       });
@@ -50,7 +50,7 @@ describe('Field', function () {
     describe('.error', function () {
       it('should create an error element', function () {
         let props = { error: 'a' };
-        var node = Field.render(component({ props }), noop);
+        var node = FormField.render(component({ props }), noop);
         let error = node.children[2];
         assert.vnode.isElement(error, 'div');
         assert.vnode.hasClass(error, 'FormField-error');
@@ -58,14 +58,14 @@ describe('Field', function () {
 
       it('should render the error message as markdown', function () {
         let props = { error: 'a' };
-        var node = Field.render(component({ props }), noop);
+        var node = FormField.render(component({ props }), noop);
         let error = node.children[2];
         assert.vnode.hasAttribute(error, 'innerHTML', '<p>a</p>\n');
       });
 
       it('should add an error class', function () {
         let props = { error: 'a' };
-        var node = Field.render(component({ props }), noop);
+        var node = FormField.render(component({ props }), noop);
         assert.vnode.hasClass(node, 'has-error');
       });
     });
@@ -73,7 +73,7 @@ describe('Field', function () {
     describe('.hint', function () {
       it('should create a hint element', function () {
         let props = { hint: 'a' };
-        var node = Field.render(component({ props }), noop);
+        var node = FormField.render(component({ props }), noop);
         let hint = node.children[3];
         assert.vnode.isElement(hint, 'div');
         assert.vnode.hasClass(hint, 'FormField-hint');
@@ -81,7 +81,7 @@ describe('Field', function () {
 
       it('should render the error message as markdown', function () {
         let props = { hint: 'a' };
-        var node = Field.render(component({ props }), noop);
+        var node = FormField.render(component({ props }), noop);
         let hint = node.children[3];
         assert.vnode.hasAttribute(hint, 'innerHTML', '<p>a</p>\n');
       });
@@ -92,7 +92,7 @@ describe('Field', function () {
     it('should set any children to the controls node', function () {
       let children = 'Hello World';
       let props = { children };
-      var node = Field.render(component({ props }), noop);
+      var node = FormField.render(component({ props }), noop);
       assert.vnode.hasChildren(node.children[1], children);
     });
   });

@@ -74,7 +74,7 @@ describe('Form', function () {
 
         // FIXME: add an `onInvalid` event handler?
         setTimeout(function () {
-          app.unmount()
+          app.unmount();
           done();
         }, 100); // assume it didn't fire the handler if we make it 100ms
       });

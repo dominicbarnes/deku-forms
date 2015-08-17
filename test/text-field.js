@@ -7,14 +7,14 @@ import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
 import { component, mount } from './util/component';
-import { Field, TextField } from '../lib';
+import { FormField, TextField } from '../lib';
 
 describe('TextField', function () {
   let noop = () => {};
 
-  it('should return a Field component', function () {
+  it('should return a FormField component', function () {
     let node = TextField.render(component(), noop);
-    assert.vnode.isElement(node, Field);
+    assert.vnode.isElement(node, FormField);
   });
 
   it('should have a plain input as the control', function () {
