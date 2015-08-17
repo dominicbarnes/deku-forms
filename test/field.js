@@ -1,4 +1,6 @@
 
+/** @jsx dom */
+
 import { component } from './util/component';
 import assert from './assertions';
 import { Field } from '../lib';

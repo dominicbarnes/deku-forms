@@ -1,4 +1,6 @@
 
+/** @jsx dom */
+
 import dom from 'dekujs/virtual-element';
 import trigger from 'adamsanderson/trigger-event';
 import { component, mount } from './util/component';
@@ -71,7 +73,10 @@ describe('Form', function () {
         trigger(app.element.firstChild, 'submit');
 
         // FIXME: add an `onInvalid` event handler?
-        setTimeout(done, 100); // assume it didn't fire the handler if we make it 100ms
+        setTimeout(function () {
+          app.unmount()
+          done();
+        }, 100); // assume it didn't fire the handler if we make it 100ms
       });
     });
 

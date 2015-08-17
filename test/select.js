@@ -1,4 +1,6 @@
 
+/** @jsx dom */
+
 import each from 'component/each';
 import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
