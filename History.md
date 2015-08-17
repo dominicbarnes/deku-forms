@@ -1,4 +1,10 @@
 
+0.1.0 / 2015-08-17
+==================
+
+  * field: renamed publicly as `FormField`
+  * field: adding `has-error` css hook
+
 0.0.2 / 2015-08-17
 ==================
 
