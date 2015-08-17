@@ -40,6 +40,21 @@ export function hasClass(node, name) {
 }
 
 /**
+ * Asserts that the virtual node object `node`, does not have a given class `name`.
+ *
+ * @param {Node} node    The virtual node to inspect.
+ * @param {String} name  The class name to search for.
+ */
+export function notHasClass(node, name) {
+  isElement(node);
+  assert(name, 'must specify a class name');
+
+  var attr = node.attributes.class || '';
+  var classes = attr.trim().split(/\s+/g);
+  assert.strictEqual(classes.indexOf(name), -1, `did not find "${name}" in "${attr}"`);
+}
+
+/**
  * Asserts that the virtual node object `node`, has a given attribute `attr`.
  * If `value` is passed as well, it will check for strict equality on the
  * attribute's value.

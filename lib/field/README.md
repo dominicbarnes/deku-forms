@@ -48,6 +48,7 @@ control(s), event after the `error`.
 | Class | Description |
 | ----- | ------- |
 | `FormField` | Applied to the container `<div>`. |
+| `has-error` | Applied to `.FormField` when there is an error being displayed |
 | `FormField-label` | Applied to the `<label>`. |
 | `FormField-controls` | Applied to the `<div>` that wraps the control(s). |
 | `FormField-error` | Applied to the `<div>` that wraps the error message. |

@@ -10,6 +10,7 @@ describe('Field', function () {
     var node = Field.render(component(), noop);
     assert.vnode.isElement(node, 'div');
     assert.vnode.hasClass(node, 'FormField');
+    assert.vnode.notHasClass(node, 'has-error');
   });
 
   it('should have the right children elements', function () {
@@ -58,6 +59,12 @@ describe('Field', function () {
         var node = Field.render(component({ props }), noop);
         let error = node.children[2];
         assert.vnode.hasAttribute(error, 'innerHTML', '<p>a</p>\n');
+      });
+
+      it('should add an error class', function () {
+        let props = { error: 'a' };
+        var node = Field.render(component({ props }), noop);
+        assert.vnode.hasClass(node, 'has-error');
       });
     });
 
