@@ -1,4 +1,10 @@
 
+0.1.1 / 2015-08-17
+==================
+
+  * field: adding `class` attribute
+  * field types: adding CSS hook for each type
+
 0.1.0 / 2015-08-17
 ==================
 
