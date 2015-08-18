@@ -15,6 +15,7 @@ describe('InputField', function () {
   it('should return a FormField component', function () {
     let node = InputField.render(component(), noop);
     assert.vnode.isElement(node, FormField);
+    assert.vnode.hasClass(node, 'InputField');
   });
 
   it('should have a plain input as the control', function () {

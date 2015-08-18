@@ -31,7 +31,7 @@ export function isElement(node, type) {
  * @param {String} name  The class name to search for.
  */
 export function hasClass(node, name) {
-  isElement(node);
+  assert(node, 'must pass a virtual node');
   assert(name, 'must specify a class name');
 
   var attr = node.attributes.class || '';

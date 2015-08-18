@@ -8,13 +8,18 @@
 ## Example
 
 ```html
-<Field id="email" label="Email" hint="Enter your real email address.">
+<Field class="EmailField" id="email" label="Email" hint="Enter your real email address.">
   <input name="email" id="email" type="email" />
 </Field>
 ```
 
 
 ## Attributes
+
+### class
+
+Adds additional class names to the field container element. This supports any inputs that
+the [classnames](https://www.npmjs.com/package/classnames) supports.
 
 ### label
 

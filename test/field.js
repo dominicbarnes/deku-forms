@@ -27,6 +27,25 @@ describe('FormField', function () {
   });
 
   describe('with props', function () {
+    describe('.class', function () {
+      it('should add additional class names to the container', function () {
+        let props = { class: 'a' };
+        var node = FormField.render(component({ props }), noop);
+        assert.vnode.isElement(node, 'div');
+        assert.vnode.hasClass(node, 'FormField');
+        assert.vnode.hasClass(node, 'a');
+      });
+
+      it('should handle complex class inputs', function () {
+        let props = { class: [ 'a', { b: true, c: false } ] };
+        var node = FormField.render(component({ props }), noop);
+        assert.vnode.isElement(node, 'div');
+        assert.vnode.hasClass(node, 'FormField');
+        assert.vnode.hasClass(node, 'a');
+        assert.vnode.hasClass(node, 'b');
+      });
+    });
+
     describe('.label', function () {
       it('should create a label element', function () {
         let props = { label: 'a' };

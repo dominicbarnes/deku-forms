@@ -15,6 +15,7 @@ describe('TextField', function () {
   it('should return a FormField component', function () {
     let node = TextField.render(component(), noop);
     assert.vnode.isElement(node, FormField);
+    assert.vnode.hasClass(node, 'TextField');
   });
 
   it('should have a plain input as the control', function () {

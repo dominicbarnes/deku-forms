@@ -15,6 +15,7 @@ describe('CheckboxField', function () {
   it('should return a FormField component', function () {
     let node = CheckboxField.render(component(), noop);
     assert.vnode.isElement(node, FormField);
+    assert.vnode.hasClass(node, 'CheckboxField');
   });
 
   it('should have a label with a nested checkbox as the control', function () {

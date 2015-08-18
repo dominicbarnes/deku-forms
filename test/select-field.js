@@ -15,6 +15,7 @@ describe('SelectField', function () {
   it('should return a FormField component', function () {
     let node = SelectField.render(component(), noop);
     assert.vnode.isElement(node, FormField);
+    assert.vnode.hasClass(node, 'SelectField');
   });
 
   it('should have a Select component as the control', function () {
