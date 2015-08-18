@@ -61,4 +61,8 @@ so refer to official documentation there:
 
 ## CSS Hooks
 
-Check the [`Field`](../field) component for more information.
+| Class | Description |
+| ----- | ------- |
+| `CheckboxField` | Applied to the container `<div>`. |
+
+Check the [`Field`](../field) component for additional hooks.
