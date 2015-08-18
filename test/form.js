@@ -12,13 +12,13 @@ describe('Form', function () {
 
   it('should return a form element', function () {
     var node = Form.render(component(), noop);
-    assert.vnode.isElement(node, 'form');
+    assert.node.isNode(node, 'form');
   });
 
   it('should include the default attributes', function () {
     var node = Form.render(component(), noop);
-    assert.vnode.hasClass(node, 'Form');
-    assert.vnode.hasAttribute(node, 'novalidate', true);
+    assert.node.hasClass(node, 'Form');
+    assert.node.hasAttribute(node, 'novalidate', true);
   });
 
   describe('with props', function () {
@@ -109,7 +109,7 @@ describe('Form', function () {
       let children = 'Hello World';
       let props = { children };
       var node = Form.render(component({ props }), noop);
-      assert.vnode.hasChildren(node, children);
+      assert.node.hasChildren(node, children);
     });
   });
 });

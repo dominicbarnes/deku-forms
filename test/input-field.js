@@ -14,14 +14,14 @@ describe('InputField', function () {
 
   it('should return a FormField component', function () {
     let node = InputField.render(component(), noop);
-    assert.vnode.isElement(node, FormField);
-    assert.vnode.hasClass(node, 'InputField');
+    assert.node.isNode(node, FormField);
+    assert.node.hasClass(node, 'InputField');
   });
 
   it('should have a plain input as the control', function () {
     let node = InputField.render(component(), noop);
     let input = node.children[0];
-    assert.vnode.isElement(input, 'input');
+    assert.node.isNode(input, 'input');
   });
 
   describe('with props', function () {
@@ -48,7 +48,7 @@ describe('InputField', function () {
           let props = { [attr]: value };
           let node = InputField.render(component({ props }), noop);
           let input = node.children[0];
-          assert.vnode.hasAttribute(input, attr, value);
+          assert.node.hasAttribute(input, attr, value);
         });
       });
     });
@@ -63,7 +63,7 @@ describe('InputField', function () {
         it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };
           let node = InputField.render(component({ props }), noop);
-          assert.vnode.hasAttribute(node, attr, value);
+          assert.node.hasAttribute(node, attr, value);
         });
       });
     });
@@ -73,13 +73,13 @@ describe('InputField', function () {
         let props = { id: 'test' };
         let node = InputField.render(component({ props }), noop);
         let input = node.children[0];
-        assert.vnode.hasAttribute(input, 'id', 'test');
+        assert.node.hasAttribute(input, 'id', 'test');
       });
 
       it('should add the id to the Field', function () {
         let props = { id: 'test' };
         let node = InputField.render(component({ props }), noop);
-        assert.vnode.hasAttribute(node, 'id', 'test');
+        assert.node.hasAttribute(node, 'id', 'test');
       });
     });
 
@@ -117,7 +117,7 @@ describe('InputField', function () {
       it('should add the error to the Field', function () {
         let state = { error: 'test' };
         let node = InputField.render(component({ state }), noop);
-        assert.vnode.hasAttribute(node, 'error', 'test');
+        assert.node.hasAttribute(node, 'error', 'test');
       });
     });
   });

@@ -14,17 +14,17 @@ describe('CheckboxField', function () {
 
   it('should return a FormField component', function () {
     let node = CheckboxField.render(component(), noop);
-    assert.vnode.isElement(node, FormField);
-    assert.vnode.hasClass(node, 'CheckboxField');
+    assert.node.isNode(node, FormField);
+    assert.node.hasClass(node, 'CheckboxField');
   });
 
   it('should have a label with a nested checkbox as the control', function () {
     let props = { label: 'a' };
     let node = CheckboxField.render(component({ props }), noop);
     let control = node.children[0];
-    assert.vnode.isElement(control, 'label');
+    assert.node.isNode(control, 'label');
     let [ input, label ] = control.children;
-    assert.vnode.isElement(input, 'input');
+    assert.node.isNode(input, 'input');
     assert.strictEqual(label, 'a');
   });
 
@@ -42,7 +42,7 @@ describe('CheckboxField', function () {
           let props = { [attr]: value };
           let node = CheckboxField.render(component({ props }), noop);
           let input = node.children[0].children[0];
-          assert.vnode.hasAttribute(input, attr, value);
+          assert.node.hasAttribute(input, attr, value);
         });
       });
     });
@@ -56,7 +56,7 @@ describe('CheckboxField', function () {
         it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };
           let node = CheckboxField.render(component({ props }), noop);
-          assert.vnode.hasAttribute(node, attr, value);
+          assert.node.hasAttribute(node, attr, value);
         });
       });
     });
@@ -85,7 +85,7 @@ describe('CheckboxField', function () {
       it('should add the error to the Field', function () {
         let state = { error: 'test' };
         let node = CheckboxField.render(component({ state }), noop);
-        assert.vnode.hasAttribute(node, 'error', 'test');
+        assert.node.hasAttribute(node, 'error', 'test');
       });
     });
   });

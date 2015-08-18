@@ -13,7 +13,7 @@ describe('Select', function () {
 
   it('should return a select element', function () {
     let node = Select.render(component(), noop);
-    assert.vnode.isElement(node, 'select');
+    assert.node.isNode(node, 'select');
   });
 
   describe('with props', function () {
@@ -30,7 +30,7 @@ describe('Select', function () {
         it(`should add the attribute to the select`, function () {
           let props = { [attr]: value };
           let node = Select.render(component({ props }), noop);
-          assert.vnode.hasAttribute(node, attr, value);
+          assert.node.hasAttribute(node, attr, value);
         });
       });
     });
@@ -40,10 +40,10 @@ describe('Select', function () {
         let options = [ 'a', 'b', 'c' ];
         let props = { options };
         let node = Select.render(component({ props }), noop);
-        assert.vnode.hasChildren(node, function (node, x) {
-          assert.vnode.isElement(node, 'option');
-          assert.vnode.hasAttribute(node, 'value', options[x]);
-          assert.vnode.hasChildren(node, options[x]);
+        assert.node.hasChildren(node, function (node, x) {
+          assert.node.isNode(node, 'option');
+          assert.node.hasAttribute(node, 'value', options[x]);
+          assert.node.hasChildren(node, options[x]);
           return true;
         });
       });
@@ -56,11 +56,11 @@ describe('Select', function () {
         ];
         let props = { options };
         let node = Select.render(component({ props }), noop);
-        assert.vnode.hasChildren(node, function (node, x) {
-          assert.vnode.isElement(node, 'option');
-          assert.vnode.hasAttribute(node, 'value', options[x].value);
-          assert.vnode.hasAttribute(node, 'selected', false);
-          assert.vnode.hasChildren(node, options[x].label);
+        assert.node.hasChildren(node, function (node, x) {
+          assert.node.isNode(node, 'option');
+          assert.node.hasAttribute(node, 'value', options[x].value);
+          assert.node.hasAttribute(node, 'selected', false);
+          assert.node.hasChildren(node, options[x].label);
           return true;
         });
       });
@@ -70,8 +70,8 @@ describe('Select', function () {
         let value = 'b';
         let props = { options, value };
         let node = Select.render(component({ props }), noop);
-        assert.vnode.hasChildren(node, function (node, x) {
-          assert.vnode.hasAttribute(node, 'selected', options[x] === value);
+        assert.node.hasChildren(node, function (node, x) {
+          assert.node.hasAttribute(node, 'selected', options[x] === value);
           return true;
         });
       });
@@ -97,7 +97,7 @@ describe('Select', function () {
         let options = [ 'a', 'b', 'c' ];
         let props = { options, placeholder: 'placeholder' };
         let node = Select.render(component({ props }), noop);
-        assert.vnode.hasChildren(node, 4);
+        assert.node.hasChildren(node, 4);
       });
 
       it('should create an option with no value', function () {
@@ -105,8 +105,8 @@ describe('Select', function () {
         let props = { options, placeholder: 'placeholder' };
         let node = Select.render(component({ props }), noop);
         var placeholder = node.children[0];
-        assert.vnode.hasAttribute(placeholder, 'value', undefined);
-        assert.vnode.hasChildren(placeholder, 'placeholder');
+        assert.node.hasAttribute(placeholder, 'value', undefined);
+        assert.node.hasChildren(placeholder, 'placeholder');
       });
     });
   });

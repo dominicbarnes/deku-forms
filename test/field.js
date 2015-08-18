@@ -10,9 +10,9 @@ describe('FormField', function () {
 
   it('should return a div with right classes', function () {
     var node = FormField.render(component(), noop);
-    assert.vnode.isElement(node, 'div');
-    assert.vnode.hasClass(node, 'FormField');
-    assert.vnode.notHasClass(node, 'has-error');
+    assert.node.isNode(node, 'div');
+    assert.node.hasClass(node, 'FormField');
+    assert.node.notHasClass(node, 'has-error');
   });
 
   it('should have the right children elements', function () {
@@ -20,8 +20,8 @@ describe('FormField', function () {
     assert.strictEqual(node.children.length, 4);
     let [ label, controls, error, hint ] = node.children;
     assert.strictEqual(label, null);
-    assert.vnode.isElement(controls, 'div');
-    assert.vnode.hasClass(controls, 'FormField-controls');
+    assert.node.isNode(controls, 'div');
+    assert.node.hasClass(controls, 'FormField-controls');
     assert.strictEqual(error, null);
     assert.strictEqual(hint, null);
   });
@@ -31,18 +31,18 @@ describe('FormField', function () {
       it('should add additional class names to the container', function () {
         let props = { class: 'a' };
         var node = FormField.render(component({ props }), noop);
-        assert.vnode.isElement(node, 'div');
-        assert.vnode.hasClass(node, 'FormField');
-        assert.vnode.hasClass(node, 'a');
+        assert.node.isNode(node, 'div');
+        assert.node.hasClass(node, 'FormField');
+        assert.node.hasClass(node, 'a');
       });
 
       it('should handle complex class inputs', function () {
         let props = { class: [ 'a', { b: true, c: false } ] };
         var node = FormField.render(component({ props }), noop);
-        assert.vnode.isElement(node, 'div');
-        assert.vnode.hasClass(node, 'FormField');
-        assert.vnode.hasClass(node, 'a');
-        assert.vnode.hasClass(node, 'b');
+        assert.node.isNode(node, 'div');
+        assert.node.hasClass(node, 'FormField');
+        assert.node.hasClass(node, 'a');
+        assert.node.hasClass(node, 'b');
       });
     });
 
@@ -51,9 +51,9 @@ describe('FormField', function () {
         let props = { label: 'a' };
         var node = FormField.render(component({ props }), noop);
         let label = node.children[0];
-        assert.vnode.isElement(label, 'label');
-        assert.vnode.hasClass(label, 'FormField-label');
-        assert.vnode.hasChildren(label, 'a');
+        assert.node.isNode(label, 'label');
+        assert.node.hasClass(label, 'FormField-label');
+        assert.node.hasChildren(label, 'a');
       });
     });
 
@@ -62,7 +62,7 @@ describe('FormField', function () {
         let props = { label: 'a', id: 'b' };
         var node = FormField.render(component({ props }), noop);
         let label = node.children[0];
-        assert.vnode.hasAttribute(label, 'for', 'b');
+        assert.node.hasAttribute(label, 'for', 'b');
       });
     });
 
@@ -71,21 +71,21 @@ describe('FormField', function () {
         let props = { error: 'a' };
         var node = FormField.render(component({ props }), noop);
         let error = node.children[2];
-        assert.vnode.isElement(error, 'div');
-        assert.vnode.hasClass(error, 'FormField-error');
+        assert.node.isNode(error, 'div');
+        assert.node.hasClass(error, 'FormField-error');
       });
 
       it('should render the error message as markdown', function () {
         let props = { error: 'a' };
         var node = FormField.render(component({ props }), noop);
         let error = node.children[2];
-        assert.vnode.hasAttribute(error, 'innerHTML', '<p>a</p>\n');
+        assert.node.hasAttribute(error, 'innerHTML', '<p>a</p>\n');
       });
 
       it('should add an error class', function () {
         let props = { error: 'a' };
         var node = FormField.render(component({ props }), noop);
-        assert.vnode.hasClass(node, 'has-error');
+        assert.node.hasClass(node, 'has-error');
       });
     });
 
@@ -94,15 +94,15 @@ describe('FormField', function () {
         let props = { hint: 'a' };
         var node = FormField.render(component({ props }), noop);
         let hint = node.children[3];
-        assert.vnode.isElement(hint, 'div');
-        assert.vnode.hasClass(hint, 'FormField-hint');
+        assert.node.isNode(hint, 'div');
+        assert.node.hasClass(hint, 'FormField-hint');
       });
 
       it('should render the error message as markdown', function () {
         let props = { hint: 'a' };
         var node = FormField.render(component({ props }), noop);
         let hint = node.children[3];
-        assert.vnode.hasAttribute(hint, 'innerHTML', '<p>a</p>\n');
+        assert.node.hasAttribute(hint, 'innerHTML', '<p>a</p>\n');
       });
     });
   });
@@ -112,7 +112,7 @@ describe('FormField', function () {
       let children = 'Hello World';
       let props = { children };
       var node = FormField.render(component({ props }), noop);
-      assert.vnode.hasChildren(node.children[1], children);
+      assert.node.hasChildren(node.children[1], children);
     });
   });
 });

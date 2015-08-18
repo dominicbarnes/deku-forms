@@ -4,15 +4,13 @@
  */
 
 import assert from 'component/assert';
-import * as component from './component';
-import * as vnode from './virtual-node';
+import * as node from 'dominicbarnes/virtual-element-assertions';
 
 /**
  * Add to the `assert` namespace.
  */
 
-assert.component = component;
-assert.vnode = vnode;
+assert.node = node;
 
 /**
  * Export `assert` as the public API.

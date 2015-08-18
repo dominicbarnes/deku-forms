@@ -14,14 +14,14 @@ describe('SelectField', function () {
 
   it('should return a FormField component', function () {
     let node = SelectField.render(component(), noop);
-    assert.vnode.isElement(node, FormField);
-    assert.vnode.hasClass(node, 'SelectField');
+    assert.node.isNode(node, FormField);
+    assert.node.hasClass(node, 'SelectField');
   });
 
   it('should have a Select component as the control', function () {
     let node = SelectField.render(component(), noop);
     let input = node.children[0];
-    assert.vnode.isElement(input, Select);
+    assert.node.isNode(input, Select);
   });
 
   describe('with props', function () {
@@ -40,7 +40,7 @@ describe('SelectField', function () {
           let props = { [attr]: value };
           let node = SelectField.render(component({ props }), noop);
           let select = node.children[0];
-          assert.vnode.hasAttribute(select, attr, value);
+          assert.node.hasAttribute(select, attr, value);
         });
       });
     });
@@ -55,7 +55,7 @@ describe('SelectField', function () {
         it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };
           let node = SelectField.render(component({ props }), noop);
-          assert.vnode.hasAttribute(node, attr, value);
+          assert.node.hasAttribute(node, attr, value);
         });
       });
     });
@@ -65,13 +65,13 @@ describe('SelectField', function () {
         let props = { id: 'test' };
         let node = SelectField.render(component({ props }), noop);
         let input = node.children[0];
-        assert.vnode.hasAttribute(input, 'id', 'test');
+        assert.node.hasAttribute(input, 'id', 'test');
       });
 
       it('should add the id to the Field', function () {
         let props = { id: 'test' };
         let node = SelectField.render(component({ props }), noop);
-        assert.vnode.hasAttribute(node, 'id', 'test');
+        assert.node.hasAttribute(node, 'id', 'test');
       });
     });
 
@@ -95,7 +95,7 @@ describe('SelectField', function () {
       it('should add the error to the Field', function () {
         let state = { error: 'test' };
         let node = SelectField.render(component({ state }), noop);
-        assert.vnode.hasAttribute(node, 'error', 'test');
+        assert.node.hasAttribute(node, 'error', 'test');
       });
     });
   });
