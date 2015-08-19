@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
-import assert from 'component/assert';
-import * as node from 'dominicbarnes/virtual-element-assertions';
+import assert from 'assert';
+import * as node from 'assert-element';
 
 /**
  * Add to the `assert` namespace.
