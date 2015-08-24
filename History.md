@@ -1,4 +1,11 @@
 
+0.1.2 / 2015-08-24
+==================
+
+  * input-field, text-field: properly clearing custom validation errors
+  * select-field: fixed bug where options were not being set
+  * tests: cleanup all around
+
 0.1.1 / 2015-08-17
 ==================
 
