@@ -28,6 +28,7 @@ describe('SelectField', function () {
     let selectAttrs = {
       disabled: true,
       name: 'test',
+      options: [ 'a', 'b' ],
       placeholder: 'test',
       required: true,
       size: 2,
