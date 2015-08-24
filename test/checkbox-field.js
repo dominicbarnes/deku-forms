@@ -5,22 +5,22 @@ import each from 'component/each';
 import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
-import { component, mount } from './util/component';
-import { delay } from './util';
+import Mock from 'dekujs/component-mock';
+import { delay, mount } from './util';
 import { FormField, CheckboxField } from '../lib';
 
 describe('CheckboxField', function () {
-  let noop = () => {};
+  let mock = Mock(CheckboxField);
 
   it('should return a FormField component', function () {
-    let node = CheckboxField.render(component(), noop);
+    let node = mock.render();
     assert.node.isNode(node, FormField);
     assert.node.hasClass(node, 'CheckboxField');
   });
 
   it('should have a label with a nested checkbox as the control', function () {
     let props = { label: 'a' };
-    let node = CheckboxField.render(component({ props }), noop);
+    let node = mock.render({ props });
     let control = node.children[0];
     assert.node.isNode(control, 'label');
     let [ input, label ] = control.children;
@@ -40,7 +40,7 @@ describe('CheckboxField', function () {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the input`, function () {
           let props = { [attr]: value };
-          let node = CheckboxField.render(component({ props }), noop);
+          let node = mock.render({ props });
           let input = node.children[0].children[0];
           assert.node.hasAttribute(input, attr, value);
         });
@@ -55,7 +55,7 @@ describe('CheckboxField', function () {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };
-          let node = CheckboxField.render(component({ props }), noop);
+          let node = mock.render({ props });
           assert.node.hasAttribute(node, attr, value);
         });
       });
@@ -84,7 +84,7 @@ describe('CheckboxField', function () {
     describe('.error', function () {
       it('should add the error to the Field', function () {
         let state = { error: 'test' };
-        let node = CheckboxField.render(component({ state }), noop);
+        let node = mock.render({ state });
         assert.node.hasAttribute(node, 'error', 'test');
       });
     });

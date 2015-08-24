@@ -5,14 +5,15 @@ import each from 'component/each';
 import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
-import { component, mount } from './util/component';
+import Mock from 'dekujs/component-mock';
+import { mount } from './util';
 import { Select } from '../lib';
 
 describe('Select', function () {
-  let noop = () => {};
+  let mock = Mock(Select);
 
   it('should return a select element', function () {
-    let node = Select.render(component(), noop);
+    let node = mock.render();
     assert.node.isNode(node, 'select');
   });
 
@@ -29,7 +30,7 @@ describe('Select', function () {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the select`, function () {
           let props = { [attr]: value };
-          let node = Select.render(component({ props }), noop);
+          let node = mock.render({ props });
           assert.node.hasAttribute(node, attr, value);
         });
       });
@@ -39,7 +40,7 @@ describe('Select', function () {
       it('should generate option elements from a simple array', function () {
         let options = [ 'a', 'b', 'c' ];
         let props = { options };
-        let node = Select.render(component({ props }), noop);
+        let node = mock.render({ props });
         assert.node.hasChildren(node, function (node, x) {
           assert.node.isNode(node, 'option');
           assert.node.hasAttribute(node, 'value', options[x]);
@@ -55,7 +56,7 @@ describe('Select', function () {
           { label: 'c', value: 3 }
         ];
         let props = { options };
-        let node = Select.render(component({ props }), noop);
+        let node = mock.render({ props });
         assert.node.hasChildren(node, function (node, x) {
           assert.node.isNode(node, 'option');
           assert.node.hasAttribute(node, 'value', options[x].value);
@@ -69,7 +70,7 @@ describe('Select', function () {
         let options = [ 'a', 'b', 'c' ];
         let value = 'b';
         let props = { options, value };
-        let node = Select.render(component({ props }), noop);
+        let node = mock.render({ props });
         assert.node.hasChildren(node, function (node, x) {
           assert.node.hasAttribute(node, 'selected', options[x] === value);
           return true;
@@ -96,14 +97,14 @@ describe('Select', function () {
       it('should prefix an option', function () {
         let options = [ 'a', 'b', 'c' ];
         let props = { options, placeholder: 'placeholder' };
-        let node = Select.render(component({ props }), noop);
+        let node = mock.render({ props });
         assert.node.hasChildren(node, 4);
       });
 
       it('should create an option with no value', function () {
         let options = [ 'a', 'b', 'c' ];
         let props = { options, placeholder: 'placeholder' };
-        let node = Select.render(component({ props }), noop);
+        let node = mock.render({ props });
         var placeholder = node.children[0];
         assert.node.hasAttribute(placeholder, 'value', undefined);
         assert.node.hasChildren(placeholder, 'placeholder');

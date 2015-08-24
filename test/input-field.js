@@ -5,21 +5,21 @@ import each from 'component/each';
 import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
-import { component, mount } from './util/component';
-import { delay } from './util';
+import Mock from 'dekujs/component-mock';
+import { delay, mount } from './util';
 import { FormField, InputField } from '../lib';
 
 describe('InputField', function () {
-  let noop = () => {};
+  let mock = Mock(InputField);
 
   it('should return a FormField component', function () {
-    let node = InputField.render(component(), noop);
+    let node = mock.render();
     assert.node.isNode(node, FormField);
     assert.node.hasClass(node, 'InputField');
   });
 
   it('should have a plain input as the control', function () {
-    let node = InputField.render(component(), noop);
+    let node = mock.render();
     let input = node.children[0];
     assert.node.isNode(input, 'input');
   });
@@ -46,7 +46,7 @@ describe('InputField', function () {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the input`, function () {
           let props = { [attr]: value };
-          let node = InputField.render(component({ props }), noop);
+          let node = mock.render({ props });
           let input = node.children[0];
           assert.node.hasAttribute(input, attr, value);
         });
@@ -62,7 +62,7 @@ describe('InputField', function () {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };
-          let node = InputField.render(component({ props }), noop);
+          let node = mock.render({ props });
           assert.node.hasAttribute(node, attr, value);
         });
       });
@@ -71,14 +71,14 @@ describe('InputField', function () {
     describe('.id', function () {
       it('should add the id to the input', function () {
         let props = { id: 'test' };
-        let node = InputField.render(component({ props }), noop);
+        let node = mock.render({ props });
         let input = node.children[0];
         assert.node.hasAttribute(input, 'id', 'test');
       });
 
       it('should add the id to the Field', function () {
         let props = { id: 'test' };
-        let node = InputField.render(component({ props }), noop);
+        let node = mock.render({ props });
         assert.node.hasAttribute(node, 'id', 'test');
       });
     });
@@ -116,7 +116,7 @@ describe('InputField', function () {
     describe('.error', function () {
       it('should add the error to the Field', function () {
         let state = { error: 'test' };
-        let node = InputField.render(component({ state }), noop);
+        let node = mock.render({ state });
         assert.node.hasAttribute(node, 'error', 'test');
       });
     });

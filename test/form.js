@@ -3,21 +3,21 @@
 
 import dom from 'dekujs/virtual-element';
 import trigger from 'adamsanderson/trigger-event';
-import { component, mount } from './util/component';
-import { delay } from './util';
 import assert from './assertions';
+import Mock from 'dekujs/component-mock';
+import { delay, mount } from './util';
 import { Form } from '../lib';
 
 describe('Form', function () {
-  let noop = () => {};
+  let mock = Mock(Form);
 
   it('should return a form element', function () {
-    var node = Form.render(component(), noop);
+    var node = mock.render();
     assert.node.isNode(node, 'form');
   });
 
   it('should include the default attributes', function () {
-    var node = Form.render(component(), noop);
+    var node = mock.render();
     assert.node.hasClass(node, 'Form');
     assert.node.hasAttribute(node, 'novalidate', true);
   });
@@ -107,9 +107,9 @@ describe('Form', function () {
 
   describe('with children', function () {
     it('should set any children to the new node', function () {
-      let children = 'Hello World';
+      let children = [ 'Hello World' ];
       let props = { children };
-      var node = Form.render(component({ props }), noop);
+      var node = mock.render({ props });
       assert.node.hasChildren(node, children);
     });
   });
