@@ -2,11 +2,11 @@
 /** @jsx dom */
 
 import each from 'component/each';
-import nextTick from 'timoxley/next-tick';
 import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
 import { component, mount } from './util/component';
+import { delay } from './util';
 import { FormField, CheckboxField } from '../lib';
 
 describe('CheckboxField', function () {
@@ -96,7 +96,7 @@ describe('CheckboxField', function () {
       let checkbox = app.element.querySelector('input');
       trigger(checkbox, 'change'); // still unchecked, will fail validation
 
-      nextTick(function () {
+      delay(function () {
         assert(app.element.querySelector('.FormField-error'));
         app.unmount();
         done();
@@ -108,11 +108,11 @@ describe('CheckboxField', function () {
       let checkbox = app.element.querySelector('input');
       trigger(checkbox, 'change'); // still unchecked, will fail validation
 
-      nextTick(function () {
+      delay(function () {
         checkbox.checked = true;
         trigger(checkbox, 'change'); // now filled, will pass
 
-        nextTick(function () {
+        delay(function () {
           assert(!app.element.querySelector('.FormField-error'));
           app.unmount();
           done();

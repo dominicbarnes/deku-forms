@@ -2,11 +2,11 @@
 /** @jsx dom */
 
 import each from 'component/each';
-import nextTick from 'timoxley/next-tick';
 import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
 import { component, mount } from './util/component';
+import { delay } from './util';
 import { FormField, Select, SelectField } from '../lib';
 
 describe('SelectField', function () {
@@ -107,7 +107,7 @@ describe('SelectField', function () {
       let select = app.element.querySelector('select');
 
       trigger(select, 'change'); // still empty, will fail validation
-      nextTick(function () {
+      delay(function () {
         assert(app.element.querySelector('.FormField-error'));
         app.unmount();
         done();
@@ -119,11 +119,11 @@ describe('SelectField', function () {
       let select = app.element.querySelector('select');
 
       trigger(select, 'change'); // still empty, will fail validation
-      nextTick(function () {
-        select.value = 'a';
+      delay(function () {
+        select.selectedIndex = 1;
         trigger(select, 'change'); // now filled, will pass
 
-        nextTick(function () {
+        delay(function () {
           assert(!app.element.querySelector('.FormField-error'));
           app.unmount();
           done();

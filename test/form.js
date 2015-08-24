@@ -4,6 +4,7 @@
 import dom from 'dekujs/virtual-element';
 import trigger from 'adamsanderson/trigger-event';
 import { component, mount } from './util/component';
+import { delay } from './util';
 import assert from './assertions';
 import { Form } from '../lib';
 
@@ -73,7 +74,7 @@ describe('Form', function () {
         trigger(app.element.firstChild, 'submit');
 
         // FIXME: add an `onInvalid` event handler?
-        setTimeout(function () {
+        delay(function () {
           app.unmount();
           done();
         }, 100); // assume it didn't fire the handler if we make it 100ms

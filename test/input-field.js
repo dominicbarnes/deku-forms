@@ -2,11 +2,11 @@
 /** @jsx dom */
 
 import each from 'component/each';
-import nextTick from 'timoxley/next-tick';
 import trigger from 'adamsanderson/trigger-event';
 import dom from 'dekujs/virtual-element';
 import assert from './assertions';
 import { component, mount } from './util/component';
+import { delay } from './util';
 import { FormField, InputField } from '../lib';
 
 describe('InputField', function () {
@@ -127,7 +127,7 @@ describe('InputField', function () {
       let app = mount(<InputField name="name" required />);
       trigger(app.element.querySelector('input'), 'input'); // still empty, will fail validation
 
-      nextTick(function () {
+      delay(function () {
         assert(app.element.querySelector('.FormField-error'));
         app.unmount();
         done();
@@ -139,15 +139,37 @@ describe('InputField', function () {
       let input = app.element.querySelector('input');
 
       trigger(input, 'input'); // still empty, will fail validation
-      nextTick(function () {
+      delay(function () {
         input.value = 'hello world';
         trigger(input, 'input'); // now filled, will pass
 
-        nextTick(function () {
+        delay(function () {
           assert(!app.element.querySelector('.FormField-error'));
           app.unmount();
           done();
         });
+      }); // run after current stack so error handler has fired
+    });
+
+    it('should remove custom error messages after being corrected', function (done) {
+      let app = mount(<InputField name="name" onChange={onChange} />);
+      let input = app.element.querySelector('input');
+      let x = 0;
+
+      function onChange(e) {
+        e.target.setCustomValidity(++x > 1 ? '' : 'failure');
+        e.target.checkValidity();
+      }
+
+      trigger(input, 'change'); // will fail validation on first change
+      delay(function () {
+        trigger(input, 'change'); // now pass on all subsequent changes
+
+        delay(function () {
+          assert(!app.element.querySelector('.FormField-error'));
+          app.unmount();
+          done();
+        }); // wait for change event to trigger state change
       }); // run after current stack so error handler has fired
     });
   });
