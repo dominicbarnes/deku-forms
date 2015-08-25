@@ -41,6 +41,12 @@ are standard HTML5 attributes, so refer to official documentation there:
  * `required`
  * `step`
 
+### error
+
+When doing some advanced asynchronous validation, you can use this prop to set that custom
+message. Doing so will preempt any native validation. (but it will continue to prevent the
+form from being submitted)
+
 ### validationMessage(validity, el)
 
 This method is used for customizing the validation/error message. `validity` is a

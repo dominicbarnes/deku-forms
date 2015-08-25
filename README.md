@@ -84,8 +84,9 @@ you call `el.setCustomValidity(message)` to mark a field as invalid with the cor
 
 ### Async Validation
 
-Currently, async validation is not built in to this approach. However, the best approach for the
-time-being is to simply disable your form's submit button if you have some async action in-flight.
-Once that action is complete, you can re-enable the submit button.
+To accomplish async validation, you can use the `error` attribute that is available on most of the
+field types. Hook into the `change` or `input` events and then you can use state within your form to
+transfer this error into your field. (see more in the [advanced example](example/advanced.js))
 
-It's not perfect, but it's pretty flexible, and not hard to accomplish with deku.
+This approach isn't perfect, but it's pretty good and doesn't require you to know anything about
+the HTML5 Constraint Validation API. (unlike previously)

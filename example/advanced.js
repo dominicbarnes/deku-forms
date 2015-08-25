@@ -2,18 +2,22 @@
 /** @jsx dom */
 
 import dom from 'dekujs/virtual-element';
-import { Form, InputField, TextField } from '../lib';
+import { Form, InputField } from '../lib';
 
-export function render({ props }) {
+export function render({ props, state }, setState) {
+  let { onSubmit } = props;
+  let { usernameError } = state;
+
   return (
-    <Form onSubmit={props.onSubmit}>
+    <Form onSubmit={onSubmit}>
       <h1>Advanced Example</h1>
       <p>
         This form uses asynchronous validation, making it a more
         advanced example.
       </p>
 
-      <TextField
+      <InputField
+        error={usernameError}
         hint="Try 'testuser' for async validation failure."
         label="Username"
         name="username"
@@ -37,8 +41,7 @@ export function render({ props }) {
 
     setTimeout(() => {
       let msg = username === 'testuser' ? 'Username already taken.' : '';
-      input.setCustomValidity(msg);
-      input.checkValidity();
+      setState({ usernameError: msg });
     }, 250);
   }
 }
