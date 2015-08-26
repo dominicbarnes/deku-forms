@@ -41,6 +41,12 @@ are standard HTML5 attributes, so refer to official documentation there:
  * `required`
  * `step`
 
+### validate
+
+When this flag is set, validation messages will be displayed after every input/change event.
+By default, this will not start happening until the first `invalid` event is fired, which
+usually comes from a form submission attempt.
+
 ### error
 
 When doing some advanced asynchronous validation, you can use this prop to set that custom

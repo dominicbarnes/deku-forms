@@ -60,6 +60,18 @@ while also allowing a great deal of customized validation.
 I recommend reading through [this documentation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Data_form_validation),
 it will be a great primer on the fundamentals of this validation system.
 
+### User Interface
+
+Validation errors are *generally* only presented to the user after their first submission attempt.
+Internally, this means the `invalid` event has been triggered. There are 2 primary ways to force
+validation on every input/change event, regardless of submission status:
+
+ - add the `validate` attribute (**preferred**)
+ - when doing custom validation, call `el.checkValidity()` manually
+
+**NOTE:** these methods only apply to the `InputField` and `TextField` components as of now.
+(since the other components don't make much sense with auto-validation)
+
 ### Custom Validation Messages
 
 All of the `*Field` components here have a `validationMessage(validity, el)` prop. You can set
