@@ -1,4 +1,9 @@
 
+0.3.0 / 2015-08-26
+==================
+
+  * validation errors only show after form submission by default
+
 0.2.0 / 2015-08-25
 ==================
 
