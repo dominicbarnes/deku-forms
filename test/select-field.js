@@ -102,6 +102,8 @@ describe('SelectField', function () {
   });
 
   describe('interaction', function () {
+    this.slow(500);
+
     it('should add validation error messages to the Field', function (done) {
       let app = mount(<SelectField name="name" required />);
       let select = app.element.querySelector('select');

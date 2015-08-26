@@ -156,10 +156,42 @@ describe('TextField', function () {
   });
 
   describe('interaction', function () {
+    this.slow(500);
+
+    it('should not validate until after the first invalid event', function (done) {
+      let app = mount(<TextField name="name" required />);
+      let input = app.element.querySelector('input');
+      trigger(input, 'input'); // will fail validation, but not shown in UI
+
+      delay(function () {
+        assert(!app.element.querySelector('.FormField-error'));
+        input.checkValidity(); // will trigger invalid event, starting auto-validation
+
+        delay(function () {
+          assert(app.element.querySelector('.FormField-error'));
+          app.unmount();
+          done();
+        });
+      }); // run after current stack so error handler has fired
+    });
+
+    it('should validate automatically with the validate attribute', function (done) {
+      let app = mount(<TextField name="name" required validate />);
+      let input = app.element.querySelector('input');
+      trigger(input, 'input'); // still empty, will fail validation
+
+      delay(function () {
+        assert(app.element.querySelector('.FormField-error'));
+        app.unmount();
+        done();
+      }); // run after current stack so error handler has fired
+    });
+
     it('should add validation error messages to the Field', function (done) {
       let app = mount(<TextField name="name" required />);
+      let input = app.element.querySelector('input');
+      input.checkValidity(); // start auto-validation
 
-      trigger(app.element.querySelector('input'), 'input'); // still empty, will fail validation
       delay(function () {
         assert(app.element.querySelector('.FormField-error'));
         app.unmount();
@@ -170,11 +202,11 @@ describe('TextField', function () {
     it('should remove the error messages after being corrected', function (done) {
       let app = mount(<TextField name="name" required />);
       let input = app.element.querySelector('input');
+      input.checkValidity('invalid'); // start auto-validation
 
-      trigger(input, 'input'); // still empty, will fail validation
       delay(function () {
         input.value = 'hello world';
-        trigger(input, 'input'); // now filled, will pass
+        trigger(input, 'change'); // now filled, will pass
 
         delay(function () {
           assert(!app.element.querySelector('.FormField-error'));

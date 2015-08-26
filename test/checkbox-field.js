@@ -91,6 +91,8 @@ describe('CheckboxField', function () {
   });
 
   describe('interaction', function () {
+    this.slow(500);
+
     it('should add validation error messages to the Field', function (done) {
       let app = mount(<CheckboxField name="name" required />);
       let checkbox = app.element.querySelector('input');
