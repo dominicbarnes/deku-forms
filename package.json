@@ -1,6 +1,6 @@
 {
   "name": "deku-forms",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "description": "A collection of deku components for working with forms",
   "repository": "dominicbarnes/deku-form",
