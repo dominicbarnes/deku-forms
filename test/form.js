@@ -23,6 +23,14 @@ describe('Form', function () {
   });
 
   describe('with props', function () {
+    describe('.class', function () {
+      it('should add the custom class', function () {
+        let props = { class: 'MyForm' };
+        let node = mock.render({ props });
+        assert.node.hasClass(node, 'MyForm');
+      });
+    });
+
     describe('.onSubmit(data, form)', function () {
       it('should fire when the form is submitted', function (done) {
         let app = mount(

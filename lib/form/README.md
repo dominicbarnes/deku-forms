@@ -17,6 +17,10 @@
 
 ## Attributes
 
+### class
+
+Adds custom CSS classes to the generated `<form>` element.
+
 ### onSubmit(data, form)
 
 Used to handle the form submission by the user. This handler is only invoked once the form's

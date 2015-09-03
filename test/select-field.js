@@ -46,6 +46,14 @@ describe('SelectField', function () {
       });
     });
 
+    describe('.class', function () {
+      it('should add the custom class', function () {
+        let props = { class: 'MyField' };
+        let node = mock.render({ props });
+        assert.node.hasClass(node, 'MyField');
+      });
+    });
+
     let fieldAttrs = {
       hint: 'a',
       label: 'b'

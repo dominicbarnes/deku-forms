@@ -73,6 +73,7 @@ Check out the main README for more information about form validation.
 
 These attributes are used directly by the [`Field`](../field) component:
 
+ * `class`
  * `hint`
  * `id`
  * `label`
