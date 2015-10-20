@@ -23,6 +23,14 @@ describe('Form', function () {
   });
 
   describe('with props', function () {
+    describe('.autocomplete', function () {
+      it('should add the autocomplete attribute', function () {
+        let props = { autocomplete: 'on' };
+        let node = mock.render({ props });
+        assert.node.hasAttribute(node, 'autocomplete', props.autocomplete);
+      });
+    });
+
     describe('.class', function () {
       it('should add the custom class', function () {
         let props = { class: 'MyForm' };
