@@ -2,7 +2,7 @@
 /** @jsx dom */
 
 import assert from './assertions';
-import Mock from 'dekujs/component-mock';
+import Mock from 'component-mock';
 import { FormField } from '../lib';
 
 describe('FormField', function () {

@@ -1,11 +1,11 @@
 
 /** @jsx dom */
 
-import each from 'component/each';
-import trigger from 'adamsanderson/trigger-event';
-import dom from 'dekujs/virtual-element';
+import each from 'for-each';
+import trigger from 'compat-trigger-event';
+import dom from 'virtual-element';
 import assert from './assertions';
-import Mock from 'dekujs/component-mock';
+import Mock from 'component-mock';
 import { mount } from './util';
 import { Select } from '../lib';
 
@@ -26,7 +26,7 @@ describe('Select', function () {
       size: 2
     };
 
-    each(attrs, function (attr, value) {
+    each(attrs, function (value, attr) {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the select`, function () {
           let props = { [attr]: value };

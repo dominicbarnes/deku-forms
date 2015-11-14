@@ -1,6 +1,0 @@
-{
-  "extends": "@dominicbarnes/node",
-  "env": {
-    "es6": false
-  }
-}

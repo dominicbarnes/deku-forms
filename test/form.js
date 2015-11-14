@@ -1,10 +1,10 @@
 
 /** @jsx dom */
 
-import dom from 'dekujs/virtual-element';
-import trigger from 'adamsanderson/trigger-event';
+import dom from 'virtual-element';
+import trigger from 'compat-trigger-event';
 import assert from './assertions';
-import Mock from 'dekujs/component-mock';
+import Mock from 'component-mock';
 import { delay, mount } from './util';
 import { Form } from '../lib';
 

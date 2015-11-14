@@ -1,11 +1,11 @@
 
 /** @jsx dom */
 
-import each from 'component/each';
-import trigger from 'adamsanderson/trigger-event';
-import dom from 'dekujs/virtual-element';
+import each from 'for-each';
+import trigger from 'compat-trigger-event';
+import dom from 'virtual-element';
 import assert from './assertions';
-import Mock from 'dekujs/component-mock';
+import Mock from 'component-mock';
 import { delay, mount } from './util';
 import { FormField, Select, SelectField } from '../lib';
 
@@ -28,14 +28,13 @@ describe('SelectField', function () {
     let selectAttrs = {
       disabled: true,
       name: 'test',
-      options: [ 'a', 'b' ],
       placeholder: 'test',
       required: true,
       size: 2,
       value: 'hello world'
     };
 
-    each(selectAttrs, function (attr, value) {
+    each(selectAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
         it('should add the attribute to the Select', function () {
           let props = { [attr]: value };
@@ -54,12 +53,23 @@ describe('SelectField', function () {
       });
     });
 
+    describe('.options', function () {
+      it('should add the options to the Select', function () {
+        let props = { options: [ 'a', 'b' ] };
+        let node = mock.render({ props });
+        let select = node.children[0];
+        assert.node.hasAttribute(select, 'options', function (value) {
+          assert.deepEqual(props.options, value);
+        });
+      });
+    });
+
     let fieldAttrs = {
       hint: 'a',
       label: 'b'
     };
 
-    each(fieldAttrs, function (attr, value) {
+    each(fieldAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };

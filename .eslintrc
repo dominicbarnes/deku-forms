@@ -1,5 +1,10 @@
 {
-  "extends": "@dominicbarnes/deku",
+  "extends": [
+    "@dominicbarnes",
+    "@dominicbarnes/browser",
+    "@dominicbarnes/deku",
+    "@dominicbarnes/mako"
+  ],
   "rules": {
     "valid-jsdoc": [ 1, {
       "prefer": { "returns": "return" },

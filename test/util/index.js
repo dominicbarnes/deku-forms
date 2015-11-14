@@ -1,5 +1,5 @@
 
-import { render, tree } from 'dekujs/deku';
+import { render, tree } from 'deku';
 
 
 export function mount(node) {
@@ -18,6 +18,6 @@ export function mount(node) {
   };
 }
 
-export function delay(fn, ms = 50) {
+export function delay(fn, ms = 100) {
   return setTimeout(fn, ms);
 }

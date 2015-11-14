@@ -1,13 +1,22 @@
-# deku-form
+# deku-forms
 
 > A collection of [deku](https://github.com/dekujs/deku) components for working with forms.
 > While I consider much of the API stable, it could change after real-world usage.
 > Generally-speaking, I forsee more additions than changes.
 
+[![npm version](https://img.shields.io/npm/v/deku-forms.svg)](https://www.npmjs.com/package/deku-forms)
+[![npm dependencies](https://img.shields.io/david/dominicbarnes/deku-forms.svg)](https://david-dm.org/dominicbarnes/deku-forms)
+[![npm dev dependencies](https://img.shields.io/david/dev/dominicbarnes/deku-forms.svg)](https://david-dm.org/dominicbarnes/deku-forms#info=devDependencies)
+[![build status](https://img.shields.io/travis/dominicbarnes/deku-forms.svg)](https://travis-ci.org/dominicbarnes/deku-forms)
+
+**NOTE:** As of `1.x`, I have switched this module over to using mako for builds instead of
+component and duo. The `0.x` releases are still compatible with duo/component as they were
+before.
+
 ## Usage
 
 ```js
-import { Form, InputField } from 'dominicbarnes/deku-forms';
+import { Form, InputField } from 'deku-forms';
 
 export function render() {
   return (

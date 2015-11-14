@@ -1,11 +1,11 @@
 
 /** @jsx dom */
 
-import each from 'component/each';
-import trigger from 'adamsanderson/trigger-event';
-import dom from 'dekujs/virtual-element';
+import each from 'for-each';
+import trigger from 'compat-trigger-event';
+import dom from 'virtual-element';
 import assert from './assertions';
-import Mock from 'dekujs/component-mock';
+import Mock from 'component-mock';
 import { delay, mount } from './util';
 import { FormField, TextField } from '../lib';
 
@@ -54,7 +54,7 @@ describe('TextField', function () {
       value: 'hello world'
     };
 
-    each(inputAttrs, function (attr, value) {
+    each(inputAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the input`, function () {
           let props = { [attr]: value };
@@ -83,7 +83,7 @@ describe('TextField', function () {
       required: true
     };
 
-    each(textareaAttrs, function (attr, value) {
+    each(textareaAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the textarea`, function () {
           let props = { [attr]: value };
@@ -99,7 +99,7 @@ describe('TextField', function () {
       label: 'b'
     };
 
-    each(fieldAttrs, function (attr, value) {
+    each(fieldAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
         it(`should add the attribute to the Field`, function () {
           let props = { [attr]: value };

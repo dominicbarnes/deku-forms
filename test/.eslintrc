@@ -3,6 +3,8 @@
   "rules": {
     "func-style": 0,
     "no-invalid-this": 0,
-    "no-undefined": 0
+    "no-undefined": 0,
+    "prefer-arrow-callback": 0,
+    "require-jsdoc": 0
   }
 }
