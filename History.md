@@ -1,4 +1,9 @@
 
+1.0.0 / 2015-11-14
+==================
+
+  * porting to build with mako instead of component/duo
+
 0.4.1 / 2015-10-20
 ==================
 
