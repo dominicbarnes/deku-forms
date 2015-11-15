@@ -7,7 +7,7 @@ import dom from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
 import { mount } from './util';
-import { Select } from '../lib';
+import { Select } from '../src';
 
 describe('Select', function () {
   let mock = Mock(Select);

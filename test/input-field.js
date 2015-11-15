@@ -7,7 +7,7 @@ import dom from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
 import { delay, mount } from './util';
-import { FormField, InputField } from '../lib';
+import { FormField, InputField } from '../src';
 
 describe('InputField', function () {
   let mock = Mock(InputField);

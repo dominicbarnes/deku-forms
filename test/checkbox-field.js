@@ -7,7 +7,7 @@ import dom from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
 import { delay, mount } from './util';
-import { FormField, CheckboxField } from '../lib';
+import { FormField, CheckboxField } from '../src';
 
 describe('CheckboxField', function () {
   let mock = Mock(CheckboxField);

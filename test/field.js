@@ -3,7 +3,7 @@
 
 import assert from './assertions';
 import Mock from 'component-mock';
-import { FormField } from '../lib';
+import { FormField } from '../src';
 
 describe('FormField', function () {
   let mock = Mock(FormField);

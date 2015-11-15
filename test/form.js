@@ -6,7 +6,7 @@ import trigger from 'compat-trigger-event';
 import assert from './assertions';
 import Mock from 'component-mock';
 import { delay, mount } from './util';
-import { Form } from '../lib';
+import { Form } from '../src';
 
 describe('Form', function () {
   let mock = Mock(Form);

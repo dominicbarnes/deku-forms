@@ -32,10 +32,12 @@
     "zuul": "^3.7.2"
   },
   "scripts": {
-    "prepublish": "babel src --source-maps inline --out-dir lib",
-    "lint": "eslint .",
+    "clean": "rm -rf lib",
+    "lint": "eslint src",
     "pretest": "npm run lint",
     "test": "zuul -- test/*.js",
-    "start": "zuul --local 7000 -- test/*.js"
+    "start": "zuul --local 7000 -- test/*.js",
+    "build": "babel src --source-maps inline --out-dir lib",
+    "prepublish": "npm run build"
   }
 }
