@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A collection of deku components for working with forms",
   "repository": "dominicbarnes/deku-forms",
+  "main": "lib/index.js",
   "dependencies": {
     "form-parse": "0.0.1",
     "magic-virtual-element": "^1.0.6",
