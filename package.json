@@ -39,5 +39,13 @@
     "start": "zuul --local 7000 -- test/*.js",
     "build": "babel src --source-maps inline --out-dir lib",
     "prepublish": "npm run build"
-  }
+  },
+  "keywords": [
+    "javascript",
+    "deku",
+    "dekujs",
+    "deku-component",
+    "forms component",
+    "deku-forms"
+  ]
 }
