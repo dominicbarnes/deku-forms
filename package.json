@@ -2,6 +2,13 @@
   "name": "deku-forms",
   "version": "1.1.0",
   "description": "A collection of deku components for working with forms",
+  "keywords": [
+    "deku",
+    "deku-component",
+    "forms",
+    "fields",
+    "validation"
+  ],
   "repository": "dominicbarnes/deku-forms",
   "main": "lib/index.js",
   "dependencies": {
