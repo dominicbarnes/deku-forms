@@ -71,7 +71,7 @@ describe('SelectField', function () {
 
     each(fieldAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
-        it(`should add the attribute to the Field`, function () {
+        it('should add the attribute to the Field', function () {
           let props = { [attr]: value };
           let node = mock.render({ props });
           assert.node.hasAttribute(node, attr, value);
