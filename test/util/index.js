@@ -18,6 +18,6 @@ export function mount(node) {
   };
 }
 
-export function delay(fn, ms = 100) {
+export function delay(fn, ms = 250) {
   return setTimeout(fn, ms);
 }
