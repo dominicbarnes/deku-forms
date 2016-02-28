@@ -6,7 +6,7 @@ import trigger from 'compat-trigger-event';
 import dom from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
-import { delay, mount } from './util';
+import { delay, mount, validationMessage } from './util';
 import { FormField, InputField } from '../src';
 
 describe('InputField', function () {
@@ -134,7 +134,7 @@ describe('InputField', function () {
     this.slow(500);
 
     it('should not validate until after the first invalid event', function (done) {
-      let app = mount(<InputField name="name" required />);
+      let app = mount(<InputField name="name" required validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       trigger(input, 'input'); // empty, will fail validation (but not be shown in UI)
 
@@ -151,7 +151,7 @@ describe('InputField', function () {
     });
 
     it('should validate automatically with the validate attribute', function (done) {
-      let app = mount(<InputField name="name" required validate />);
+      let app = mount(<InputField name="name" required validate validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       trigger(input, 'input'); // still empty, will fail validation
 
@@ -163,7 +163,7 @@ describe('InputField', function () {
     });
 
     it('should add validation error messages to the Field', function (done) {
-      let app = mount(<InputField name="name" required />);
+      let app = mount(<InputField name="name" required validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       input.checkValidity(); // still empty, will fail validation
 
@@ -175,7 +175,7 @@ describe('InputField', function () {
     });
 
     it('should remove the error messages after being corrected', function (done) {
-      let app = mount(<InputField name="name" required />);
+      let app = mount(<InputField name="name" required validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       input.checkValidity(); // still empty, will fail validation
 
@@ -192,7 +192,7 @@ describe('InputField', function () {
     });
 
     it('should remove custom error messages after being corrected', function (done) {
-      let app = mount(<InputField name="name" onChange={onChange} />);
+      let app = mount(<InputField name="name" onChange={onChange} validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       let x = 0;
 

@@ -6,7 +6,7 @@ import trigger from 'compat-trigger-event';
 import dom from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
-import { delay, mount } from './util';
+import { delay, mount, validationMessage } from './util';
 import { FormField, CheckboxField } from '../src';
 
 describe('CheckboxField', function () {
@@ -102,7 +102,7 @@ describe('CheckboxField', function () {
     this.slow(500);
 
     it('should add validation error messages to the Field', function (done) {
-      let app = mount(<CheckboxField name="name" required />);
+      let app = mount(<CheckboxField name="name" required validationMessage={validationMessage} />);
       let checkbox = app.element.querySelector('input');
       trigger(checkbox, 'change'); // still unchecked, will fail validation
 
