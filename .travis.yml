@@ -3,6 +3,9 @@ language: node_js
 node_js:
 - stable
 install: npm update
+script:
+  - npm test
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run test-cloud || false'
 cache:
   directories:
   - node_modules
