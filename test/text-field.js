@@ -139,6 +139,34 @@ describe('TextField', function () {
       });
     });
 
+    describe('.onBlur(e)', function () {
+      it('should fire the event handler', function (done) {
+        let app = mount(<TextField onBlur={handle} />);
+
+        function handle(e) {
+          assert.strictEqual(e.type, 'blur');
+          app.unmount();
+          done();
+        }
+
+        trigger(app.element.querySelector('input'), 'blur');
+      });
+    });
+
+    describe('.onFocus(e)', function () {
+      it('should fire the event handler', function (done) {
+        let app = mount(<TextField onFocus={handle} />);
+
+        function handle(e) {
+          assert.strictEqual(e.type, 'focus');
+          app.unmount();
+          done();
+        }
+
+        trigger(app.element.querySelector('input'), 'focus');
+      });
+    });
+
     describe('.onInput(e)', function () {
       it('should fire the event handler', function (done) {
         let app = mount(<TextField onInput={handle} />);

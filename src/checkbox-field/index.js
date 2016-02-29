@@ -27,8 +27,14 @@ export let propTypes = {
   // Sets the input name, which is used during serializing.
   name: { type: 'string' },
 
+  // Fired when the input loses focus.
+  onBlur: { type: 'function' },
+
   // Fired when the input's value changes.
   onChange: { type: 'function' },
+
+  // Fired when the input is focused.
+  onFocus: { type: 'function' },
 
   // Indicates that this field must be entered in order to be validated.
   required: { type: 'boolean' },
@@ -69,7 +75,7 @@ export function render({ props, state }, setState) {
   // validation props
   let { required } = props;
   // event props
-  let { onChange } = props;
+  let { onBlur, onChange, onFocus } = props;
   // state
   let { error } = state;
 
@@ -77,7 +83,10 @@ export function render({ props, state }, setState) {
   let fieldAttrs = { error, hint, description };
 
   // attributes for the generated <input>
-  let inputAttrs = { checked, name, value, required, type: 'checkbox' };
+  let inputAttrs = {
+    checked, name, value, required, type: 'checkbox',
+    onBlur, onFocus
+  };
 
   return (
     <Field class={[ 'CheckboxField', props.class ]} {...fieldAttrs}>

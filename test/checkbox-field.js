@@ -74,6 +74,20 @@ describe('CheckboxField', function () {
       // TODO
     });
 
+    describe('.onBlur(e)', function () {
+      it('should fire the event handler', function (done) {
+        let app = mount(<CheckboxField onBlur={handle} />);
+
+        function handle(e) {
+          assert.strictEqual(e.type, 'blur');
+          app.unmount();
+          done();
+        }
+
+        trigger(app.element.querySelector('input'), 'blur');
+      });
+    });
+
     describe('.onChange(e)', function () {
       it('should fire the event handler', function (done) {
         let app = mount(<CheckboxField onChange={handle} />);
@@ -86,6 +100,20 @@ describe('CheckboxField', function () {
 
         trigger(app.element.querySelector('input'), 'change');
       });
+    });
+  });
+
+  describe('.onFocus(e)', function () {
+    it('should fire the event handler', function (done) {
+      let app = mount(<CheckboxField onFocus={handle} />);
+
+      function handle(e) {
+        assert.strictEqual(e.type, 'focus');
+        app.unmount();
+        done();
+      }
+
+      trigger(app.element.querySelector('input'), 'focus');
     });
   });
 
