@@ -96,7 +96,8 @@ describe('TextField', function () {
 
     let fieldAttrs = {
       hint: 'a',
-      label: 'b'
+      label: 'b',
+      description: 'c'
     };
 
     each(fieldAttrs, function (value, attr) {

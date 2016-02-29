@@ -77,6 +77,7 @@ These attributes are used directly by the [`Field`](../field) component:
  * `hint`
  * `id`
  * `label`
+ * `description`
 
 ### Events
 
