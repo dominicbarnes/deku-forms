@@ -1,4 +1,11 @@
 
+0.5.0 / 2016-02-28
+==================
+
+  * supporting markdown for field descriptions
+  * adding support for focus and blur events
+  * adding description to fields
+
 0.4.1 / 2015-10-20
 ==================
 
