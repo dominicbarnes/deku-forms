@@ -23,7 +23,11 @@ the [classnames](https://www.npmjs.com/package/classnames) supports.
 
 ### label
 
-Adds a label for your field, which is displayed first and right above the controls.
+Adds a label for your field, which is displayed first and above the controls.
+
+### description
+
+Adds a description for your field, which is displayed below the label and above the controls.
 
 ### id
 
@@ -55,6 +59,7 @@ control(s), event after the `error`.
 | `FormField` | Applied to the container `<div>`. |
 | `has-error` | Applied to `.FormField` when there is an error being displayed |
 | `FormField-label` | Applied to the `<label>`. |
+| `FormField-description` | Applied to the `<div>` that wraps the description. |
 | `FormField-controls` | Applied to the `<div>` that wraps the control(s). |
 | `FormField-error` | Applied to the `<div>` that wraps the error message. |
 | `FormField-hint` | Applied to the `<div>` that wraps the hint. |

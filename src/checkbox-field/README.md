@@ -51,6 +51,7 @@ These attributes are used directly by the [`Field`](../field) component:
  * `class`
  * `hint`
  * `label`
+ * `description`
 
 ### Events
 
