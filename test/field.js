@@ -65,7 +65,13 @@ describe('FormField', function () {
         let description = node.children[1];
         assert.node.isNode(description, 'div');
         assert.node.hasClass(description, 'FormField-description');
-        assert.node.hasChildren(description, 'a');
+      });
+
+      it('should render the description as markdown', function () {
+        let props = { description: 'a' };
+        var node = mock.render({ props });
+        let description = node.children[1];
+        assert.node.hasAttribute(description, 'innerHTML', '<p>a</p>\n');
       });
     });
 

@@ -63,7 +63,7 @@ export function render({ props }) {
     : null;
 
   var description = props.description
-    ? <div class="FormField-description">{props.description}</div>
+    ? <div class="FormField-description" innerHTML={marked(props.description)} />
     : null;
 
   var controls = <div class="FormField-controls">{props.children}</div>;
