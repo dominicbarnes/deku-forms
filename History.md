@@ -1,4 +1,9 @@
 
+1.2.1 / 2016-02-28
+==================
+
+  * supporting markdown for field descriptions
+
 1.2.0 / 2016-02-28
 ==================
 
