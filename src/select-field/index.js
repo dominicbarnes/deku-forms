@@ -34,8 +34,14 @@ export let propTypes = {
   // Sets the input name, which is used during serializing.
   name: { type: 'string' },
 
+  // Fired when the input loses focus
+  onBlur: { type: 'function' },
+
   // Fired when the input's value changes.
   onChange: { type: 'function' },
+
+  // Fired when the input gains focus
+  onFocus: { type: 'function' },
 
   // Adds placeholder text to the input.
   placeholder: { type: 'string' },
@@ -80,7 +86,7 @@ export function render({ props, state }, setState) {
   // validation props
   let { required } = props;
   // event props
-  let { onChange } = props;
+  let { onBlur, onChange, onFocus } = props;
   // error
   let error = props.error || state.error;
 
@@ -89,7 +95,8 @@ export function render({ props, state }, setState) {
 
   // attributes for the Select
   let selectAttrs = {
-    disabled, id, name, options, placeholder, required, size, value
+    disabled, id, name, options, placeholder, required, size, value,
+    onBlur, onFocus
   };
 
   // field classes

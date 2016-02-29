@@ -78,6 +78,21 @@ describe('Select', function () {
       });
     });
 
+    describe('.onBlur(e)', function () {
+      it('should fire the event handler', function (done) {
+        let options = [ 'a', 'b', 'c' ];
+        let app = mount(<Select onBlur={handle} options={options} />);
+
+        function handle(e) {
+          assert.strictEqual(e.type, 'blur');
+          app.unmount();
+          done();
+        }
+
+        trigger(app.element.querySelector('select'), 'blur');
+      });
+    });
+
     describe('.onChange(e)', function () {
       it('should fire the event handler', function (done) {
         let options = [ 'a', 'b', 'c' ];
@@ -90,6 +105,21 @@ describe('Select', function () {
         }
 
         trigger(app.element.querySelector('select'), 'change');
+      });
+    });
+
+    describe('.onFocus(e)', function () {
+      it('should fire the event handler', function (done) {
+        let options = [ 'a', 'b', 'c' ];
+        let app = mount(<Select onFocus={handle} options={options} />);
+
+        function handle(e) {
+          assert.strictEqual(e.type, 'focus');
+          app.unmount();
+          done();
+        }
+
+        trigger(app.element.querySelector('select'), 'focus');
       });
     });
 
