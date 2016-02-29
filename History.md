@@ -1,4 +1,10 @@
 
+1.2.0 / 2016-02-28
+==================
+
+  * adding support for focus and blur events
+  * adding description to fields
+
 1.1.0 / 2015-11-15
 ==================
 
