@@ -17,9 +17,10 @@ describe('FormField', function () {
 
   it('should have the right children elements', function () {
     var node = mock.render();
-    assert.strictEqual(node.children.length, 4);
-    let [ label, controls, error, hint ] = node.children;
+    assert.node.hasChildren(node, 5);
+    let [ label, description, controls, error, hint ] = node.children;
     assert.strictEqual(label, null);
+    assert.strictEqual(description, null);
     assert.node.isNode(controls, 'div');
     assert.node.hasClass(controls, 'FormField-controls');
     assert.strictEqual(error, null);
@@ -57,6 +58,17 @@ describe('FormField', function () {
       });
     });
 
+    describe('.description', function () {
+      it('should create a description element', function () {
+        let props = { description: 'a' };
+        var node = mock.render({ props });
+        let description = node.children[1];
+        assert.node.isNode(description, 'div');
+        assert.node.hasClass(description, 'FormField-description');
+        assert.node.hasChildren(description, 'a');
+      });
+    });
+
     describe('.id', function () {
       it('should add a for attribute to the label element', function () {
         let props = { label: 'a', id: 'b' };
@@ -70,7 +82,7 @@ describe('FormField', function () {
       it('should create an error element', function () {
         let props = { error: 'a' };
         var node = mock.render({ props });
-        let error = node.children[2];
+        let error = node.children[3];
         assert.node.isNode(error, 'div');
         assert.node.hasClass(error, 'FormField-error');
       });
@@ -78,7 +90,7 @@ describe('FormField', function () {
       it('should render the error message as markdown', function () {
         let props = { error: 'a' };
         var node = mock.render({ props });
-        let error = node.children[2];
+        let error = node.children[3];
         assert.node.hasAttribute(error, 'innerHTML', '<p>a</p>\n');
       });
 
@@ -93,7 +105,7 @@ describe('FormField', function () {
       it('should create a hint element', function () {
         let props = { hint: 'a' };
         var node = mock.render({ props });
-        let hint = node.children[3];
+        let hint = node.children[4];
         assert.node.isNode(hint, 'div');
         assert.node.hasClass(hint, 'FormField-hint');
       });
@@ -101,7 +113,7 @@ describe('FormField', function () {
       it('should render the error message as markdown', function () {
         let props = { hint: 'a' };
         var node = mock.render({ props });
-        let hint = node.children[3];
+        let hint = node.children[4];
         assert.node.hasAttribute(hint, 'innerHTML', '<p>a</p>\n');
       });
     });
@@ -112,7 +124,7 @@ describe('FormField', function () {
       let children = [ 'Hello World' ];
       let props = { children };
       var node = mock.render({ props });
-      assert.node.hasChildren(node.children[1], children);
+      assert.node.hasChildren(node.children[2], children);
     });
   });
 });

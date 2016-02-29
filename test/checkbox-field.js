@@ -56,6 +56,7 @@ describe('CheckboxField', function () {
     });
 
     let fieldAttrs = {
+      description: 'a',
       hint: 'b'
     };
 

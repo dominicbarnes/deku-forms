@@ -63,7 +63,8 @@ describe('InputField', function () {
 
     let fieldAttrs = {
       hint: 'a',
-      label: 'b'
+      label: 'b',
+      description: 'c'
     };
 
     each(fieldAttrs, function (attr, value) {
