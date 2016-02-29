@@ -70,7 +70,9 @@ These are standard HTML5 attributes, so refer to official documentation there:
 These events are triggered by the `<input>` directly. These are standard HTML events,
 so refer to official documentation there:
 
+ * `onBlur(e)`
  * `onChange(e)`
+ * `onFocus(e)`
 
 
 ## CSS Hooks

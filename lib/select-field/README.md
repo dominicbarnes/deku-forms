@@ -68,7 +68,9 @@ These attributes are used directly by the [`Field`](../field) component:
 These events are triggered by the `<input>` directly. These are standard HTML events,
 so refer to official documentation there:
 
+ * `onBlur(e)`
  * `onChange(e)`
+ * `onFocus(e)`
 
 
 ## CSS Hooks
