@@ -6,7 +6,7 @@ import trigger from 'compat-trigger-event';
 import dom from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
-import { delay, mount } from './util';
+import { delay, mount, validationMessage } from './util';
 import { FormField, TextField } from '../src';
 
 describe('TextField', function () {
@@ -56,7 +56,7 @@ describe('TextField', function () {
 
     each(inputAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
-        it(`should add the attribute to the input`, function () {
+        it('should add the attribute to the input', function () {
           let props = { [attr]: value };
           let node = mock.render({ props });
           let input = node.children[0];
@@ -85,7 +85,7 @@ describe('TextField', function () {
 
     each(textareaAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
-        it(`should add the attribute to the textarea`, function () {
+        it('should add the attribute to the textarea', function () {
           let props = { [attr]: value };
           let node = mock.render({ props });
           let input = node.children[0];
@@ -96,12 +96,13 @@ describe('TextField', function () {
 
     let fieldAttrs = {
       hint: 'a',
-      label: 'b'
+      label: 'b',
+      description: 'c'
     };
 
     each(fieldAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
-        it(`should add the attribute to the Field`, function () {
+        it('should add the attribute to the Field', function () {
           let props = { [attr]: value };
           let node = mock.render({ props });
           assert.node.hasAttribute(node, attr, value);
@@ -167,7 +168,7 @@ describe('TextField', function () {
     this.slow(500);
 
     it('should not validate until after the first invalid event', function (done) {
-      let app = mount(<TextField name="name" required />);
+      let app = mount(<TextField name="name" required validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       trigger(input, 'input'); // will fail validation, but not shown in UI
 
@@ -184,7 +185,7 @@ describe('TextField', function () {
     });
 
     it('should validate automatically with the validate attribute', function (done) {
-      let app = mount(<TextField name="name" required validate />);
+      let app = mount(<TextField name="name" required validate validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       trigger(input, 'input'); // still empty, will fail validation
 
@@ -196,7 +197,7 @@ describe('TextField', function () {
     });
 
     it('should add validation error messages to the Field', function (done) {
-      let app = mount(<TextField name="name" required />);
+      let app = mount(<TextField name="name" required validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       input.checkValidity(); // start auto-validation
 
@@ -208,7 +209,7 @@ describe('TextField', function () {
     });
 
     it('should remove the error messages after being corrected', function (done) {
-      let app = mount(<TextField name="name" required />);
+      let app = mount(<TextField name="name" required validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       input.checkValidity('invalid'); // start auto-validation
 
@@ -225,7 +226,7 @@ describe('TextField', function () {
     });
 
     it('should remove custom error messages after being corrected', function (done) {
-      let app = mount(<TextField name="name" onChange={onChange} />);
+      let app = mount(<TextField name="name" onChange={onChange} validationMessage={validationMessage} />);
       let input = app.element.querySelector('input');
       let x = 0;
 

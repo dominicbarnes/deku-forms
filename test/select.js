@@ -28,7 +28,7 @@ describe('Select', function () {
 
     each(attrs, function (value, attr) {
       describe(`.${attr}`, function () {
-        it(`should add the attribute to the select`, function () {
+        it('should add the attribute to the select', function () {
           let props = { [attr]: value };
           let node = mock.render({ props });
           assert.node.hasAttribute(node, attr, value);

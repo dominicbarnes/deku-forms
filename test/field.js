@@ -57,6 +57,17 @@ describe('FormField', function () {
       });
     });
 
+    describe('.description', function () {
+      it('should create a description element', function () {
+        let props = { description: 'a' };
+        var node = mock.render({ props });
+        let description = node.children[0];
+        assert.node.isNode(description, 'div');
+        assert.node.hasClass(description, 'FormField-description');
+        assert.node.hasChildren(description, 'a');
+      });
+    });
+
     describe('.id', function () {
       it('should add a for attribute to the label element', function () {
         let props = { label: 'a', id: 'b' };

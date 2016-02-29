@@ -6,7 +6,7 @@ import trigger from 'compat-trigger-event';
 import dom from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
-import { delay, mount } from './util';
+import { delay, mount, validationMessage } from './util';
 import { FormField, Select, SelectField } from '../src';
 
 describe('SelectField', function () {
@@ -66,12 +66,13 @@ describe('SelectField', function () {
 
     let fieldAttrs = {
       hint: 'a',
-      label: 'b'
+      label: 'b',
+      description: 'c'
     };
 
     each(fieldAttrs, function (value, attr) {
       describe(`.${attr}`, function () {
-        it(`should add the attribute to the Field`, function () {
+        it('should add the attribute to the Field', function () {
           let props = { [attr]: value };
           let node = mock.render({ props });
           assert.node.hasAttribute(node, attr, value);
@@ -123,7 +124,7 @@ describe('SelectField', function () {
     this.slow(500);
 
     it('should add validation error messages to the Field', function (done) {
-      let app = mount(<SelectField name="name" required />);
+      let app = mount(<SelectField name="name" required validationMessage={validationMessage} />);
       let select = app.element.querySelector('select');
 
       trigger(select, 'change'); // still empty, will fail validation
@@ -135,7 +136,7 @@ describe('SelectField', function () {
     });
 
     it('should remove the error messages after being corrected', function (done) {
-      let app = mount(<SelectField name="name" options={[ '', 'a', 'b' ]} required />);
+      let app = mount(<SelectField name="name" options={[ '', 'a', 'b' ]} required validationMessage={validationMessage} />);
       let select = app.element.querySelector('select');
 
       trigger(select, 'change'); // still empty, will fail validation
