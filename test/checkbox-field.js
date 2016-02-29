@@ -88,6 +88,34 @@ describe('CheckboxField', function () {
     });
   });
 
+  describe('.onFocus(e)', function () {
+    it('should fire the event handler', function (done) {
+      let app = mount(<CheckboxField onFocus={handle} />);
+
+      function handle(e) {
+        assert.strictEqual(e.type, 'input');
+        app.unmount();
+        done();
+      }
+
+      trigger(app.element.querySelector('input'), 'focus');
+    });
+  });
+
+  describe('.onBlur(e)', function () {
+    it('should fire the event handler', function (done) {
+      let app = mount(<CheckboxField onBlur={handle} />);
+
+      function handle(e) {
+        assert.strictEqual(e.type, 'input');
+        app.unmount();
+        done();
+      }
+
+      trigger(app.element.querySelector('input'), 'blur');
+    });
+  });
+
   describe('with state', function () {
     describe('.error', function () {
       it('should add the error to the Field', function () {

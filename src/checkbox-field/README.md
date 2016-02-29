@@ -58,6 +58,8 @@ These events are triggered by the `<input>` directly. These are standard HTML ev
 so refer to official documentation there:
 
  * `onChange(e)`
+ * `onFocus(e)`
+ * `onBlur(e)`
 
 
 ## CSS Hooks

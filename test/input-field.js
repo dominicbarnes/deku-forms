@@ -120,6 +120,34 @@ describe('InputField', function () {
     });
   });
 
+  describe('.onFocus(e)', function () {
+    it('should fire the event handler', function (done) {
+      let app = mount(<InputField onFocus={handle} />);
+
+      function handle(e) {
+        assert.strictEqual(e.type, 'input');
+        app.unmount();
+        done();
+      }
+
+      trigger(app.element.querySelector('input'), 'focus');
+    });
+  });
+
+  describe('.onBlur(e)', function () {
+    it('should fire the event handler', function (done) {
+      let app = mount(<InputField onBlur={handle} />);
+
+      function handle(e) {
+        assert.strictEqual(e.type, 'input');
+        app.unmount();
+        done();
+      }
+
+      trigger(app.element.querySelector('input'), 'blur');
+    });
+  });
+
   describe('with state', function () {
     describe('.error', function () {
       it('should add the error to the Field', function () {

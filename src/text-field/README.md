@@ -85,6 +85,8 @@ so refer to official documentation there:
 
  * `onChange(e)`
  * `onInput(e)`
+ * `onFocus(e)`
+ * `onBlur(e)`
 
 
 ## CSS Hooks

@@ -39,8 +39,14 @@ export let propTypes = {
   // Sets the input name, which is used during serializing.
   name: { type: 'string' },
 
+  // Fired when the input loses focus.
+  onBlur: { type: 'function' },
+
   // Fired when the input's value changes.
   onChange: { type: 'function' },
+
+  // Fired when the input is focused.
+  onFocus: { type: 'function' },
 
   // Fired while the input is receiving input.
   onInput: { type: 'function' },
@@ -99,7 +105,7 @@ export function render({ props, state }, setState) {
   // validation props
   let { maxlength, minlength, pattern, required } = props;
   // event props
-  let { onChange, onInput } = props;
+  let { onChange, onInput, onFocus, onBlur } = props;
   // error
   let error = props.error || state.error;
   // validate
@@ -114,6 +120,8 @@ export function render({ props, state }, setState) {
     // events
     onChange: handleChange,
     onInput: handleInput,
+    onFocus: onFocus,
+    onBlur: onBlur,
     onInvalid: handleInvalid
   };
 
