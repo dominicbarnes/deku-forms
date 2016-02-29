@@ -28,6 +28,9 @@ export let propTypes = {
   // Sets the label for the form field.
   label: { type: 'string' },
 
+  // Sets the description for the form field.
+  description: { type: 'string' },
+
   // Sets the input name, which is used during serializing.
   name: { type: 'string' },
 
@@ -73,7 +76,7 @@ export function render({ props, state }, setState) {
   // general props
   let { disabled, name, options, placeholder, size, value } = props;
   // field props
-  let { hint, id, label } = props;
+  let { hint, id, label, description } = props;
   // validation props
   let { required } = props;
   // event props
@@ -82,7 +85,7 @@ export function render({ props, state }, setState) {
   let error = props.error || state.error;
 
   // attributes for the Field
-  let fieldAttrs = { error, hint, id, label };
+  let fieldAttrs = { error, hint, id, label, description };
 
   // attributes for the Select
   let selectAttrs = {

@@ -21,6 +21,9 @@ export let propTypes = {
   // Sets the label for the form field.
   label: { type: 'string' },
 
+  // Sets the description for the form field.
+  description: { type: 'string' },
+
   // Sets the input name, which is used during serializing.
   name: { type: 'string' },
 
@@ -62,7 +65,7 @@ export function render({ props, state }, setState) {
   // general props
   let { checked, name, value } = props;
   // field props
-  let { hint, label } = props;
+  let { hint, label, description } = props;
   // validation props
   let { required } = props;
   // event props
@@ -71,7 +74,7 @@ export function render({ props, state }, setState) {
   let { error } = state;
 
   // attributes for the Field
-  let fieldAttrs = { error, hint };
+  let fieldAttrs = { error, hint, description };
 
   // attributes for the generated <input>
   let inputAttrs = { checked, name, value, required, type: 'checkbox' };

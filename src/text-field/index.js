@@ -27,6 +27,9 @@ export let propTypes = {
   // Sets the label for the form field.
   label: { type: 'string' },
 
+  // Sets the description for the form field.
+  description: { type: 'string' },
+
   // Sets the maximum length for the input. (used during validation)
   maxlength: { type: 'number' },
 
@@ -95,7 +98,7 @@ export function render({ props, state }, setState) {
   // general props
   let { disabled, name, placeholder, readonly, size, value } = props;
   // field props
-  let { hint, id, label } = props;
+  let { hint, id, label, description } = props;
   // validation props
   let { maxlength, minlength, pattern, required } = props;
   // event props
@@ -118,7 +121,7 @@ export function render({ props, state }, setState) {
   };
 
   // attributes for the Field
-  let fieldAttrs = { error, hint, id, label, name };
+  let fieldAttrs = { error, hint, id, label, name, description };
 
   // use a textarea for multiline, plain input otherwise
   let control = props.multiline
