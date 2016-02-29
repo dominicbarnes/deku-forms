@@ -5,7 +5,7 @@ node_js:
 install: npm update
 script:
   - npm test
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run test-cloud || false'
+  - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && npm run test-cloud || true'
 cache:
   directories:
   - node_modules
