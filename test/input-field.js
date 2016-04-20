@@ -241,5 +241,11 @@ describe('InputField', function () {
         }); // wait for change event to trigger state change
       }); // run after current stack so error handler has fired
     });
+
+    it('should autofocus the input', function () {
+      let app = mount(<InputField autofocus name="name" />);
+      let control = app.element.querySelector('input');
+      assert.strictEqual(control, document.activeElement, `expected ${control.outerHTML} to have focus`);
+    });
   });
 });
