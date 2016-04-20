@@ -25,6 +25,12 @@ These are standard HTML attributes, so refer to official documentation there:
  * `size`
  * `value`
 
+### autofocus
+
+Since `autofocus` is used by the browser to focus a field onload, it doesn't
+really work the same in the context of something like deku. Thus, this prop
+uses `afterMount` to manually focus the input after being added to the DOM.
+
 ### multiline
 
 When this attribute is set, the control will be a `<textarea>`. (by default, a plain `<input>`

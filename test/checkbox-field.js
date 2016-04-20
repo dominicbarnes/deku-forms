@@ -158,5 +158,11 @@ describe('CheckboxField', function () {
         });
       }); // run after current stack so error handler has fired
     });
+
+    it('should autofocus the select', function () {
+      let app = mount(<CheckboxField autofocus />);
+      let control = app.element.querySelector('input');
+      assert.strictEqual(control, document.activeElement, `expected ${control.outerHTML} to have focus`);
+    });
   });
 });
