@@ -1,4 +1,9 @@
 
+1.4.0 / 2016-04-19
+==================
+
+  * switch to remarkable for markdown rendering
+
 1.3.0 / 2016-04-19
 ==================
 
