@@ -9,6 +9,9 @@ import * as Field from '../field';
  * Available props
  */
 export let propTypes = {
+  // Supports automatically focusing the input on mount.
+  autofocus: { type: 'boolean' },
+
   // Adds custom CSS classes to the form field.
   class: { type: 'string' },
 
@@ -91,6 +94,18 @@ export let defaultProps = {
     return el.validationMessage;
   }
 };
+
+/**
+ * The afterMount hook is only used to autofocus the input. (when enabled)
+ *
+ * @param {Object} component
+ * @param {HTMLElement} el
+ */
+export function afterMount({ props }, el) {
+  if (props.autofocus) {
+    el.getElementsByTagName(props.multiline ? 'textarea' : 'input')[0].focus();
+  }
+}
 
 /**
  * An input control for accepting text input, using an `input[type=text]`
