@@ -107,7 +107,7 @@ you call `el.setCustomValidity(message)` to mark a field as invalid with the cor
 
 To accomplish async validation, you can use the `error` attribute that is available on most of the
 field types. Hook into the `change` or `input` events and then you can use state within your form to
-transfer this error into your field. (see more in the [advanced example](example/advanced.js))
+transfer this error into your field.
 
 This approach isn't perfect, but it's pretty good and doesn't require you to know anything about
 the HTML5 Constraint Validation API. (unlike previously)
