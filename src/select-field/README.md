@@ -24,6 +24,12 @@ These attributes are passed directly to the [Select](../select) component:
  * `size`
  * `value`
 
+### autofocus
+
+Since `autofocus` is used by the browser to focus a field onload, it doesn't
+really work the same in the context of something like deku. Thus, this prop
+uses `afterMount` to manually focus the input after being added to the DOM.
+
 ### Validation
 
 These attributes are applied directly to the `<input>`/`<textare>` and are used for validation.
