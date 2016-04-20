@@ -2,7 +2,9 @@
 /** @jsx dom */
 
 import dom from 'magic-virtual-element';
-import marked from 'marked';
+import Remarkable from 'remarkable';
+
+const markdown = new Remarkable();
 
 
 /**
@@ -63,17 +65,17 @@ export function render({ props }) {
     : null;
 
   var description = props.description
-    ? <div class="FormField-description" innerHTML={marked(props.description)} />
+    ? <div class="FormField-description" innerHTML={markdown.render(props.description)} />
     : null;
 
   var controls = <div class="FormField-controls">{props.children}</div>;
 
   var error = props.error
-    ? <div class="FormField-error" innerHTML={marked(props.error)} />
+    ? <div class="FormField-error" innerHTML={markdown.render(props.error)} />
     : null;
 
   var hint = props.hint
-    ? <div class="FormField-hint" innerHTML={marked(props.hint)} />
+    ? <div class="FormField-hint" innerHTML={markdown.render(props.hint)} />
     : null;
 
   var classes = {
