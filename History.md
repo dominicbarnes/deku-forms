@@ -1,4 +1,9 @@
 
+1.4.1 / 2016-04-21
+==================
+
+  * adding autofocus attr to input to enable autofocus even during server-side rendering
+
 1.4.0 / 2016-04-19
 ==================
 
