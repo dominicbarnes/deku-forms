@@ -26,6 +26,7 @@ describe('InputField', function () {
 
   describe('with props', function () {
     let inputAttrs = {
+      autofocus: true,
       disabled: true,
       max: 50,
       maxlength: 50,

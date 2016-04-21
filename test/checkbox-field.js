@@ -30,6 +30,7 @@ describe('CheckboxField', function () {
 
   describe('with props', function () {
     let inputAttrs = {
+      autofocus: true,
       checked: true,
       name: 'test',
       required: true,

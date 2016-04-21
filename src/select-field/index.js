@@ -93,7 +93,7 @@ export function afterMount({ props }, el) {
  */
 export function render({ props, state }, setState) {
   // general props
-  let { disabled, name, options, placeholder, size, value } = props;
+  let { autofocus, disabled, name, options, placeholder, size, value } = props;
   // field props
   let { hint, id, label, description } = props;
   // validation props
@@ -108,7 +108,7 @@ export function render({ props, state }, setState) {
 
   // attributes for the Select
   let selectAttrs = {
-    disabled, id, name, options, placeholder, required, size, value,
+    autofocus, disabled, id, name, options, placeholder, required, size, value,
     onBlur, onFocus
   };
 

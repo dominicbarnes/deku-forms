@@ -117,7 +117,7 @@ export function afterMount({ props }, el) {
  */
 export function render({ props, state }, setState) {
   // general props
-  let { disabled, name, placeholder, readonly, size, value } = props;
+  let { autofocus, disabled, name, placeholder, readonly, size, value } = props;
   // field props
   let { hint, id, label, description } = props;
   // validation props
@@ -132,7 +132,7 @@ export function render({ props, state }, setState) {
   // attributes for the generated <input>
   let controlAttrs = {
     // general
-    disabled, id, name, placeholder, readonly, size,
+    autofocus, disabled, id, name, placeholder, readonly, size,
     // validation
     maxlength, minlength, pattern, required,
     // events

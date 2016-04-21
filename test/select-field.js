@@ -26,6 +26,7 @@ describe('SelectField', function () {
 
   describe('with props', function () {
     let selectAttrs = {
+      autofocus: true,
       disabled: true,
       name: 'test',
       placeholder: 'test',

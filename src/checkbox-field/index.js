@@ -82,7 +82,7 @@ export function afterMount({ props }, el) {
  */
 export function render({ props, state }, setState) {
   // general props
-  let { checked, name, value } = props;
+  let { autofocus, checked, name, value } = props;
   // field props
   let { hint, label, description } = props;
   // validation props
@@ -97,7 +97,7 @@ export function render({ props, state }, setState) {
 
   // attributes for the generated <input>
   let inputAttrs = {
-    checked, name, value, required, type: 'checkbox',
+    autofocus, checked, name, value, required, type: 'checkbox',
     onBlur, onFocus
   };
 

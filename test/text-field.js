@@ -42,6 +42,7 @@ describe('TextField', function () {
     });
 
     let inputAttrs = {
+      autofocus: true,
       disabled: true,
       maxlength: 10,
       minlength: 2,
