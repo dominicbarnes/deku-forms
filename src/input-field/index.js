@@ -9,6 +9,9 @@ import * as Field from '../field';
  * Available props
  */
 export let propTypes = {
+  // Adds accept to type=file inputs.
+  accept: { type: 'string' },
+
   // Supports automatically focusing the input on mount.
   autofocus: { type: 'boolean' },
 
@@ -95,10 +98,7 @@ export let propTypes = {
   validationMessage: { type: 'function' },
 
   // Sets the input value.
-  value: { type: 'string' },
-
-  // Adds accept to type=file inputs.
-  accept: { type: 'string' }
+  value: { type: 'string' }
 };
 
 /**
@@ -137,7 +137,7 @@ export function afterMount({ props }, el) {
  */
 export function render({ props, state }, setState) {
   // general props
-  let { autofocus, disabled, name, placeholder, readonly, size, type, value, accept } = props;
+  let { accept, autofocus, disabled, name, placeholder, readonly, size, type, value } = props;
   // field props
   let { hint, id, label, description } = props;
   // validation props
@@ -155,7 +155,7 @@ export function render({ props, state }, setState) {
   // attributes for the generated <input>
   let inputAttrs = {
     // general
-    autofocus, disabled, id, name, placeholder, readonly, size, type, value, accept,
+    accept, autofocus, disabled, id, name, placeholder, readonly, size, type, value,
     // validation
     max, maxlength, min, minlength, pattern, required, step,
     // events
