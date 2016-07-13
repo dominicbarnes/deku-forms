@@ -95,7 +95,10 @@ export let propTypes = {
   validationMessage: { type: 'function' },
 
   // Sets the input value.
-  value: { type: 'string' }
+  value: { type: 'string' },
+
+  // Adds accept to type=file inputs.
+  accept: { type: 'string' }
 };
 
 /**
@@ -134,7 +137,7 @@ export function afterMount({ props }, el) {
  */
 export function render({ props, state }, setState) {
   // general props
-  let { autofocus, disabled, name, placeholder, readonly, size, type, value } = props;
+  let { autofocus, disabled, name, placeholder, readonly, size, type, value, accept } = props;
   // field props
   let { hint, id, label, description } = props;
   // validation props
@@ -158,6 +161,11 @@ export function render({ props, state }, setState) {
     // events
     onBlur, onFocus
   };
+
+  // add accept support to <input type=file>s
+  if (type === 'file' && accept) {
+    inputAttrs.accept = accept;
+  }
 
   return (
     <Field class={[ 'InputField', props.class ]} {...fieldAttrs}>

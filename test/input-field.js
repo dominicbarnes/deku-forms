@@ -24,6 +24,21 @@ describe('InputField', function () {
     assert.node.isNode(input, 'input');
   });
 
+  describe('given type=file', function () {
+    describe('with accept=XXX', function () {
+      it('should add the attribute', function () {
+        let node = mock.render({
+          props: {
+            type: 'file',
+            accept: 'image/*'
+          }
+        });
+        let input = node.children[0];
+        assert.node.hasAttribute(input, 'accept', 'image/*');
+      });
+    });
+  });
+
   describe('with props', function () {
     let inputAttrs = {
       autofocus: true,
