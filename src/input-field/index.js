@@ -155,17 +155,12 @@ export function render({ props, state }, setState) {
   // attributes for the generated <input>
   let inputAttrs = {
     // general
-    autofocus, disabled, id, name, placeholder, readonly, size, type, value,
+    autofocus, disabled, id, name, placeholder, readonly, size, type, value, accept,
     // validation
     max, maxlength, min, minlength, pattern, required, step,
     // events
     onBlur, onFocus
   };
-
-  // add accept support to <input type=file>s
-  if (type === 'file' && accept) {
-    inputAttrs.accept = accept;
-  }
 
   return (
     <Field class={[ 'InputField', props.class ]} {...fieldAttrs}>
