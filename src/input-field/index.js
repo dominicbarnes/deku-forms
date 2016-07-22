@@ -116,13 +116,16 @@ export let defaultProps = {
 };
 
 /**
- * The afterMount hook is only used to autofocus the input. (when enabled)
+ * This hook is used for both autofocus and setting the default error message.
  *
  * @param {Object} component
  * @param {HTMLElement} el
  */
 export function afterMount({ props }, el) {
-  if (props.autofocus) el.getElementsByTagName('input')[0].focus();
+  let input = el.querySelector('input');
+  if (props.autofocus) input.focus();
+  // if an error was specified in props, set that right away.
+  input.setCustomValidity(props.error || '');
 }
 
 /**
@@ -214,16 +217,4 @@ export function render({ props, state }, setState) {
     let validity = el.validity;
     setState({ error: props.validationMessage(validity, el) });
   }
-}
-
-/**
- * When an error is specified in props, it means there is async validation
- * taking place. In this case, the specified error must always take priority.
- *
- * @param {Object} component
- * @param {HTMLElement} el
- */
-export function afterRender({ props, state }, el) {
-  let input = el.querySelector('input');
-  input.setCustomValidity(props.error || '');
 }

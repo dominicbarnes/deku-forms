@@ -7,7 +7,7 @@ import dom from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
 import { delay, mount, validationMessage } from './util';
-import { FormField, InputField } from '../src';
+import { Form, FormField, InputField } from '../src';
 
 describe('InputField', function () {
   let mock = Mock(InputField);
@@ -234,6 +234,47 @@ describe('InputField', function () {
           done();
         });
       }); // run after current stack so error handler has fired
+    });
+
+    it('should add custom validation error messages to the Field', function (done) {
+      let app = mount(<InputField name="name" />);
+      let input = app.element.querySelector('input');
+      input.setCustomValidity('fail');
+      input.checkValidity();
+
+      delay(function () {
+        assert(app.element.querySelector('.FormField-error'));
+        app.unmount();
+        done();
+      }); // run after current stack so error handler has fired
+    });
+
+    it('should preserve custom validation even re-renders occur', function (done) {
+      let app = mount(
+        <Form>
+          <InputField name="name" />
+          <button type="submit" />
+        </Form>
+      );
+      let input = app.element.querySelector('input');
+      let button = app.element.querySelector('button');
+      input.setCustomValidity('fail');
+      input.checkValidity();
+
+      delay(function () {
+        assert(app.element.querySelector('.FormField-error'));
+        trigger(button, 'click');
+
+        delay(function () {
+          trigger(input, 'input');
+
+          delay(function () {
+            assert(app.element.querySelector('.FormField-error'));
+            app.unmount();
+            done();
+          });
+        });
+      });
     });
 
     it('should remove custom error messages after being corrected', function (done) {
