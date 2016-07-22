@@ -280,12 +280,14 @@ describe('TextField', function () {
       let app = mount(<TextField autofocus />);
       let control = app.element.querySelector('input');
       assert.strictEqual(control, document.activeElement, `expected ${control.outerHTML} to have focus`);
+      app.unmount();
     });
 
     it('should autofocus the textarea', function () {
       let app = mount(<TextField autofocus multiline />);
       let control = app.element.querySelector('textarea');
       assert.strictEqual(control, document.activeElement, `expected ${control.outerHTML} to have focus`);
+      app.unmount();
     });
   });
 });

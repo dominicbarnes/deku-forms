@@ -164,6 +164,7 @@ describe('CheckboxField', function () {
       let app = mount(<CheckboxField autofocus />);
       let control = app.element.querySelector('input');
       assert.strictEqual(control, document.activeElement, `expected ${control.outerHTML} to have focus`);
+      app.unmount();
     });
   });
 });
