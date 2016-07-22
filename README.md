@@ -48,16 +48,16 @@ export function render() {
 
 ### Core
 
- - [Form](lib/form)
- - [FormField](lib/field)
- - [Select](lib/select)
+ - [Form](src/form)
+ - [FormField](src/field)
+ - [Select](src/select)
 
 ### Field Types
 
- - [CheckboxField](lib/checkbox-field)
- - [InputField](lib/input-field)
- - [TextField](lib/text-field)
- - [SelectField](lib/select-field)
+ - [CheckboxField](src/checkbox-field)
+ - [InputField](src/input-field)
+ - [TextField](src/text-field)
+ - [SelectField](src/select-field)
 
 
 ## Validation
