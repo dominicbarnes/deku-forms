@@ -42,6 +42,8 @@ export function afterMount({ props }, el) {
 export function render({ props, state }, setState) {
   // general props
   let { accept, autofocus, disabled, name, placeholder, readonly, size, type, value } = props;
+  // css hooks
+  let { labelClass, descriptionClass, controlClass, errorClass, hintClass } = props;
   // field props
   let { hint, id, label, description } = props;
   // validation props
@@ -54,7 +56,12 @@ export function render({ props, state }, setState) {
   let validate = props.validate || state.validate;
 
   // attributes for the Field
-  let fieldAttrs = { error, hint, id, label, description };
+  let fieldAttrs = {
+    // general
+    error, hint, id, label, description,
+    // css hooks
+    labelClass, descriptionClass, errorClass, hintClass
+  };
 
   // attributes for the generated <input>
   let inputAttrs = {
@@ -69,6 +76,7 @@ export function render({ props, state }, setState) {
   return (
     <Field class={[ 'InputField', props.class ]} {...fieldAttrs}>
       <input {...inputAttrs}
+        class={controlClass}
         onChange={handleChange}
         onInput={handleInput}
         onInvalid={handleInvalid} />

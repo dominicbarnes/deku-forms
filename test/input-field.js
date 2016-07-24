@@ -75,10 +75,23 @@ describe('InputField', function () {
       });
     });
 
+    describe('.controlClass', function () {
+      it('should add the custom class to the input', function () {
+        let props = { controlClass: 'a' };
+        let node = mock.render({ props });
+        assert.node.hasClass(node.children[0], 'a');
+      });
+    });
+
     let fieldAttrs = {
       hint: 'a',
       label: 'b',
-      description: 'c'
+      description: 'c',
+      error: 'd',
+      hintClass: 'e',
+      labelClass: 'f',
+      descriptionClass: 'g',
+      errorClass: 'h'
     };
 
     each(fieldAttrs, function (value, attr) {
