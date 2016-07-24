@@ -17,6 +17,7 @@ describe('Select', function () {
 
   describe('with props', function () {
     let attrs = {
+      class: 'a',
       disabled: true,
       id: 'a',
       name: 'b',

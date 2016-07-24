@@ -23,7 +23,7 @@ export function render({ props }) {
   };
 
   return (
-    <select {...selectAttrs}>
+    <select {...selectAttrs} class={props.class}>
       {options(props.options, props.value, props.placeholder)}
     </select>
   );

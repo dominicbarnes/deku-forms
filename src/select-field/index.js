@@ -37,6 +37,8 @@ export function afterMount({ props }, el) {
 export function render({ props, state }, setState) {
   // general props
   let { autofocus, disabled, name, options, placeholder, size, value } = props;
+  // css hooks
+  let { labelClass, descriptionClass, controlClass, errorClass, hintClass } = props;
   // field props
   let { hint, id, label, description } = props;
   // validation props
@@ -47,12 +49,17 @@ export function render({ props, state }, setState) {
   let error = props.error || state.error;
 
   // attributes for the Field
-  let fieldAttrs = { error, hint, id, label, description };
+  let fieldAttrs = {
+    // general
+    error, hint, id, label, description,
+    // css hooks
+    labelClass, descriptionClass, errorClass, hintClass
+  };
 
   // attributes for the Select
   let selectAttrs = {
     autofocus, disabled, id, name, options, placeholder, required, size, value,
-    onBlur, onFocus
+    onBlur, onFocus, class: controlClass
   };
 
   // field classes
