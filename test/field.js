@@ -1,6 +1,4 @@
 
-/** @jsx dom */
-
 import assert from './assertions';
 import Mock from 'component-mock';
 import { FormField } from '../src';

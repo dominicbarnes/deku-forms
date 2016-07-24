@@ -1,7 +1,5 @@
 
-/** @jsx dom */
-
-import dom from 'magic-virtual-element';
+import element from 'magic-virtual-element';
 import Remarkable from 'remarkable';
 
 const markdown = new Remarkable();

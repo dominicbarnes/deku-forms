@@ -1,9 +1,7 @@
 
-/** @jsx dom */
-
 import each from 'for-each';
 import trigger from 'compat-trigger-event';
-import dom from 'virtual-element';
+import element from 'virtual-element';
 import assert from './assertions';
 import Mock from 'component-mock';
 import { delay, mount, validationMessage } from './util';

@@ -1,7 +1,5 @@
 
-/** @jsx dom */
-
-import dom from 'virtual-element';
+import element from 'virtual-element';
 import trigger from 'compat-trigger-event';
 import assert from './assertions';
 import Mock from 'component-mock';

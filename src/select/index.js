@@ -1,7 +1,5 @@
 
-/** @jsx dom */
-
-import dom from 'virtual-element';
+import element from 'virtual-element';
 
 /**
  * Renders a single `<select>` element. Most of the props are simply attributes

@@ -1,7 +1,5 @@
 
-/** @jsx dom */
-
-import dom from 'magic-virtual-element';
+import element from 'magic-virtual-element';
 import parse from 'form-parse';
 
 /**

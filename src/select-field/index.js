@@ -1,7 +1,5 @@
 
-/** @jsx dom */
-
-import dom from 'magic-virtual-element';
+import element from 'magic-virtual-element';
 import * as Field from '../field';
 import * as Select from '../select';
 
