@@ -56,6 +56,15 @@ describe('FormField', function () {
       });
     });
 
+    describe('.labelClass', function () {
+      it('should add additional class names to the label element', function () {
+        let props = { label: 'a', labelClass: 'b' };
+        var node = mock.render({ props });
+        let label = node.children[0];
+        assert.node.hasClass(label, 'b');
+      });
+    });
+
     describe('.description', function () {
       it('should create a description element', function () {
         let props = { description: 'a' };
@@ -70,6 +79,15 @@ describe('FormField', function () {
         var node = mock.render({ props });
         let description = node.children[1];
         assert.node.hasAttribute(description, 'innerHTML', '<p>a</p>\n');
+      });
+    });
+
+    describe('.descriptionClass', function () {
+      it('should add additional class names to the description element', function () {
+        let props = { description: 'a', descriptionClass: 'b' };
+        var node = mock.render({ props });
+        let description = node.children[1];
+        assert.node.hasClass(description, 'b');
       });
     });
 
@@ -105,6 +123,15 @@ describe('FormField', function () {
       });
     });
 
+    describe('.errorClass', function () {
+      it('should add additional classes to the error element', function () {
+        let props = { error: 'a', errorClass: 'b' };
+        var node = mock.render({ props });
+        let error = node.children[3];
+        assert.node.hasClass(error, 'b');
+      });
+    });
+
     describe('.hint', function () {
       it('should create a hint element', function () {
         let props = { hint: 'a' };
@@ -119,6 +146,15 @@ describe('FormField', function () {
         var node = mock.render({ props });
         let hint = node.children[4];
         assert.node.hasAttribute(hint, 'innerHTML', '<p>a</p>\n');
+      });
+    });
+
+    describe('.hintClass', function () {
+      it('should add additional classes to the hint element', function () {
+        let props = { hint: 'a', hintClass: 'b' };
+        var node = mock.render({ props });
+        let hint = node.children[4];
+        assert.node.hasClass(hint, 'b');
       });
     });
   });

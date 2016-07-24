@@ -15,21 +15,21 @@ const markdown = new Remarkable();
  */
 export function render({ props }) {
   var label = props.label
-    ? <label class="FormField-label" for={props.id}>{props.label}</label>
+    ? <label class={[ 'FormField-label', props.labelClass ]} for={props.id}>{props.label}</label>
     : null;
 
   var description = props.description
-    ? <div class="FormField-description" innerHTML={markdown.render(props.description)} />
+    ? <div class={[ 'FormField-description', props.descriptionClass ]} innerHTML={markdown.render(props.description)} />
     : null;
 
-  var controls = <div class="FormField-controls">{props.children}</div>;
+  var controls = <div class={[ 'FormField-controls', props.controlsClass ]}>{props.children}</div>;
 
   var error = props.error
-    ? <div class="FormField-error" innerHTML={markdown.render(props.error)} />
+    ? <div class={[ 'FormField-error', props.errorClass ]} innerHTML={markdown.render(props.error)} />
     : null;
 
   var hint = props.hint
-    ? <div class="FormField-hint" innerHTML={markdown.render(props.hint)} />
+    ? <div class={[ 'FormField-hint', props.hintClass ]} innerHTML={markdown.render(props.hint)} />
     : null;
 
   var classes = {
