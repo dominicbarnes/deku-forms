@@ -1,4 +1,10 @@
 
+1.6.0 / 2016-07-23
+==================
+
+  * adding additional css hooks for fields and all field types
+  * remove superfluous propTypes
+
 1.5.1 / 2016-07-22
 ==================
 
