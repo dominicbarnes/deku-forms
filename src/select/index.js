@@ -3,46 +3,6 @@
 
 import dom from 'virtual-element';
 
-
-/**
- * Available props
- */
-export let propTypes = {
-  // Disables the input.
-  disabled: { type: 'boolean' },
-
-  // Adds an id to this element, plus the label within the field for better UX.
-  id: { type: 'string' },
-
-  // Sets the input name, which is used during serializing.
-  name: { type: 'string' },
-
-  // Fired when the input loses focus
-  onBlur: { type: 'function' },
-
-  // Fired when the input's value changes.
-  onChange: { type: 'function' },
-
-  // Fired when the input gains focus
-  onFocus: { type: 'function' },
-
-  // The options for this select.
-  options: { type: 'array' },
-
-  // Adds an empty value option at the top. (visible if nothing else selected)
-  placeholder: { type: 'string' },
-
-  // Indicates that this field must be entered in order to be validated.
-  required: { type: 'boolean' },
-
-  // Sets the input size attribute, generally CSS is encouraged here though.
-  size: { type: 'number' },
-
-  // Preselects an option.
-  value: { type: 'string' }
-};
-
-
 /**
  * Renders a single `<select>` element. Most of the props are simply attributes
  * that get added to the element.

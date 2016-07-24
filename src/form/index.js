@@ -4,36 +4,6 @@
 import dom from 'magic-virtual-element';
 import parse from 'form-parse';
 
-
-/**
- * Available props
- */
-export let propTypes = {
-  /**
-   * Toggle autocomplete on form.
-   */
-  autocomplete: { type: 'boolean' },
-
-  /**
-   * Adds custom CSS classes to the form.
-   */
-  class: { type: 'string' },
-
-  /**
-   * Passed as the `transformer` argument to dominicbarnes/form-serialize
-   * @see https://github.com/dominicbarnes/form-serialize
-   */
-  transform: { type: 'function' },
-
-  /**
-   * Invoked once the form has passed validation and is able to be submitted.
-   *
-   * @param {Object} data
-   * @param {HTMLFormElement} form
-   */
-  onSubmit: { type: 'function' }
-};
-
 /**
  * Renders a form with any children, which don't necessarilly have to be
  * components from this library.

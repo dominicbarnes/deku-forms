@@ -5,63 +5,6 @@ import dom from 'magic-virtual-element';
 import * as Field from '../field';
 import * as Select from '../select';
 
-
-/**
- * Available props
- */
-export let propTypes = {
-  // Supports automatically focusing the input on mount.
-  autofocus: { type: 'boolean' },
-
-  // Adds custom CSS classes to the form field.
-  class: { type: 'string' },
-
-  // Disables the input.
-  disabled: { type: 'boolean' },
-
-  // Explicitly sets an error message (used during async validation)
-  error: { type: 'string' },
-
-  // Adds an id to this element, plus the label within the field for better UX.
-  id: { type: 'string' },
-
-  // Adds a hint to the form field.
-  hint: { type: 'string' },
-
-  // Sets the label for the form field.
-  label: { type: 'string' },
-
-  // Sets the description for the form field.
-  description: { type: 'string' },
-
-  // Sets the input name, which is used during serializing.
-  name: { type: 'string' },
-
-  // Fired when the input loses focus
-  onBlur: { type: 'function' },
-
-  // Fired when the input's value changes.
-  onChange: { type: 'function' },
-
-  // Fired when the input gains focus
-  onFocus: { type: 'function' },
-
-  // Adds placeholder text to the input.
-  placeholder: { type: 'string' },
-
-  // Indicates that this field must be entered in order to be validated.
-  required: { type: 'boolean' },
-
-  // Sets the input size attribute, generally CSS is encouraged here though.
-  size: { type: 'number' },
-
-  // Used to customize the error message.
-  validationMessage: { type: 'function' },
-
-  // Sets the input value.
-  value: { type: 'string' }
-};
-
 /**
  * Default properties, generally this list will remain small, as the browser
  * has it's own (reasonable) defaults.
