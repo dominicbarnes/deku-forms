@@ -19,7 +19,7 @@
 ### class
 
 Adds additional class names to the field container element. This supports any inputs that
-the [classnames](https://www.npmjs.com/package/classnames) supports.
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
 
 ### label
 
@@ -28,7 +28,7 @@ Adds a label for your field, which is displayed first and above the controls.
 ### labelClass
 
 Adds additional class names to the label container element. This supports any inputs that
-the [classnames](https://www.npmjs.com/package/classnames) supports.
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
 
 ### description
 
@@ -37,7 +37,7 @@ Adds a description for your field, which is displayed below the label and above 
 ### descriptionClass
 
 Adds additional class names to the description container element. This supports any inputs that
-the [classnames](https://www.npmjs.com/package/classnames) supports.
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
 
 ### id
 
@@ -56,7 +56,7 @@ See the `InputField` for an example of how this works in practice.
 ### errorClass
 
 Adds additional class names to the error container element. This supports any inputs that
-the [classnames](https://www.npmjs.com/package/classnames) supports.
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
 
 ### hint
 
@@ -69,7 +69,7 @@ control(s), event after the `error`.
 ### hintClass
 
 Adds additional class names to the hint container element. This supports any inputs that
-the [classnames](https://www.npmjs.com/package/classnames) supports.
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
 
 
 ## CSS Hooks

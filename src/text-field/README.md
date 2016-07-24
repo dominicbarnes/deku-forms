@@ -36,6 +36,11 @@ uses `afterMount` to manually focus the input after being added to the DOM.
 When this attribute is set, the control will be a `<textarea>`. (by default, a plain `<input>`
 is used)
 
+### controlClass
+
+Adds additional class names to the input/textarea element. This supports any inputs that
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
+
 ### Validation
 
 These attributes are applied directly to the `<input>`/`<textare>` and are used for validation.
@@ -84,6 +89,10 @@ These attributes are used directly by the [`Field`](../field) component:
  * `id`
  * `label`
  * `description`
+ * `hintClass`
+ * `labelClass`
+ * `descriptionClass`
+ * `errorClass`
 
 ### Events
 

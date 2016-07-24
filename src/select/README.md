@@ -58,6 +58,11 @@ have an empty `value`, but uses the placeholder text as the `label`.
 This has the effect of acting like a placeholder where no value has previously been selected.
 (otherwise, the first `<option>` is selected by default)
 
+### class
+
+Adds additional class names to the select element. This supports any inputs that
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
+
 ### Validation
 
 These attributes are applied directly to the `<input>`/`<textare>` and are used for validation.

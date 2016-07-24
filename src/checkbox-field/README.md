@@ -27,6 +27,21 @@ Since `autofocus` is used by the browser to focus a field onload, it doesn't
 really work the same in the context of something like deku. Thus, this prop
 uses `afterMount` to manually focus the input after being added to the DOM.
 
+### label
+
+Rather than delegating the label to the underlying `Field` component, this attribute is used
+to generate a `<label>` that wraps around the checkbox for better UX.
+
+### labelClass
+
+Adds additional class names to the label container element. This supports any inputs that
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
+
+### controlClass
+
+Adds additional class names to the input/textarea element. This supports any inputs that
+the [classnames](https://www.npmjs.com/package/classnames) module supports.
+
 ### Validation
 
 These attributes are applied directly to the `<input>` and are used for validation. These
@@ -56,8 +71,10 @@ These attributes are used directly by the [`Field`](../field) component:
 
  * `class`
  * `hint`
- * `label`
  * `description`
+ * `hintClass`
+ * `descriptionClass`
+ * `errorClass`
 
 ### Events
 
