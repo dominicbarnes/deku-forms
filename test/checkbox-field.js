@@ -54,9 +54,23 @@ describe('CheckboxField', function () {
       });
     });
 
+    describe('.controlClass', function () {
+      it('should add the custom class to the input', function () {
+        let props = { controlClass: 'a' };
+        let node = mock.render({ props });
+        assert.node.hasClass(node.children[0].children[0], 'a');
+      });
+    });
+
     let fieldAttrs = {
-      description: 'a',
-      hint: 'b'
+      hint: 'a',
+      // label: 'b',
+      description: 'c',
+      // error: 'd',
+      hintClass: 'e',
+      // labelClass: 'f',
+      descriptionClass: 'g'
+      // errorClass: 'h'
     };
 
     each(fieldAttrs, function (value, attr) {
@@ -67,6 +81,10 @@ describe('CheckboxField', function () {
           assert.node.hasAttribute(node, attr, value);
         });
       });
+    });
+
+    describe('.error', function () {
+      // TODO
     });
 
     describe('.label', function () {

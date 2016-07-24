@@ -36,6 +36,8 @@ export function afterMount({ props }, el) {
 export function render({ props, state }, setState) {
   // general props
   let { autofocus, checked, name, value } = props;
+  // css hooks
+  let { labelClass, descriptionClass, controlClass, errorClass, hintClass } = props;
   // field props
   let { hint, label, description } = props;
   // validation props
@@ -46,17 +48,22 @@ export function render({ props, state }, setState) {
   let { error } = state;
 
   // attributes for the Field
-  let fieldAttrs = { error, hint, description };
+  let fieldAttrs = {
+    // general
+    description, error, hint,
+    // css hooks
+    descriptionClass, errorClass, hintClass
+  };
 
   // attributes for the generated <input>
   let inputAttrs = {
     autofocus, checked, name, value, required, type: 'checkbox',
-    onBlur, onFocus
+    onBlur, onFocus, class: controlClass
   };
 
   return (
     <Field class={[ 'CheckboxField', props.class ]} {...fieldAttrs}>
-      <label>
+      <label class={labelClass}>
         <input {...inputAttrs} onChange={handleChange} onInvalid={checkError} />
         {label}
       </label>
