@@ -72,6 +72,20 @@ describe('TextField', function () {
       });
     });
 
+    describe('.controlClass', function () {
+      it('should add the custom class to the input', function () {
+        let props = { controlClass: 'a' };
+        let node = mock.render({ props });
+        assert.node.hasClass(node.children[0], 'a');
+      });
+
+      it('should add the custom class to the textarea', function () {
+        let props = { controlClass: 'a', multiline: true };
+        let node = mock.render({ props });
+        assert.node.hasClass(node.children[0], 'a');
+      });
+    });
+
     let textareaAttrs = {
       disabled: true,
       maxlength: 10,
@@ -96,7 +110,12 @@ describe('TextField', function () {
     let fieldAttrs = {
       hint: 'a',
       label: 'b',
-      description: 'c'
+      description: 'c',
+      error: 'd',
+      hintClass: 'e',
+      labelClass: 'f',
+      descriptionClass: 'g',
+      errorClass: 'h'
     };
 
     each(fieldAttrs, function (value, attr) {

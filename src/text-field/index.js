@@ -37,6 +37,8 @@ export function afterMount({ props }, el) {
 export function render({ props, state }, setState) {
   // general props
   let { autofocus, disabled, name, placeholder, readonly, size, value } = props;
+  // css hooks
+  let { labelClass, descriptionClass, controlClass, errorClass, hintClass } = props;
   // field props
   let { hint, id, label, description } = props;
   // validation props
@@ -58,11 +60,19 @@ export function render({ props, state }, setState) {
     onChange: handleChange,
     onInput: handleInput,
     onInvalid: handleInvalid,
-    onBlur, onFocus
+    onBlur,
+    onFocus,
+    // custom class names
+    class: controlClass
   };
 
   // attributes for the Field
-  let fieldAttrs = { error, hint, id, label, name, description };
+  let fieldAttrs = {
+    // general
+    error, hint, id, label, name, description,
+    // css hooks
+    labelClass, descriptionClass, errorClass, hintClass
+  };
 
   // use a textarea for multiline, plain input otherwise
   let control = props.multiline
