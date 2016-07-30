@@ -12,7 +12,7 @@
   "repository": "dominicbarnes/deku-forms",
   "main": "lib/index.js",
   "dependencies": {
-    "form-parse": "0.0.1",
+    "form-parse": "^0.1.0",
     "magic-virtual-element": "^1.0.6",
     "remarkable": "^1.6.2",
     "virtual-element": "^1.2.0"
