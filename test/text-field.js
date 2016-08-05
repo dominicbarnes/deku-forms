@@ -22,6 +22,12 @@ describe('TextField', function () {
     assert.node.isNode(input, 'input');
   });
 
+  it('should generate an id when one is not specified', function () {
+    let node = mock.render();
+    let input = node.children[0];
+    assert.node.hasAttribute(input, 'id');
+  });
+
   describe('with props', function () {
     describe('.multiline', function () {
       it('should use a textarea instead of an input', function () {

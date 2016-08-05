@@ -37,6 +37,12 @@ describe('InputField', function () {
     });
   });
 
+  it('should generate an id when one is not specified', function () {
+    let node = mock.render();
+    let input = node.children[0];
+    assert.node.hasAttribute(input, 'id');
+  });
+
   describe('with props', function () {
     let inputAttrs = {
       autofocus: true,

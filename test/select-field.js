@@ -22,6 +22,12 @@ describe('SelectField', function () {
     assert.node.isNode(input, Select);
   });
 
+  it('should generate an id when one is not specified', function () {
+    let node = mock.render();
+    let input = node.children[0];
+    assert.node.hasAttribute(input, 'id');
+  });
+
   describe('with props', function () {
     let selectAttrs = {
       autofocus: true,

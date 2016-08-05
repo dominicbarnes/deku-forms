@@ -1,5 +1,6 @@
 
 import element from 'magic-virtual-element';
+import uuid from 'uuid';
 import * as Field from '../field';
 import * as Select from '../select';
 
@@ -40,13 +41,15 @@ export function render({ props, state }, setState) {
   // css hooks
   let { labelClass, descriptionClass, controlClass, errorClass, hintClass } = props;
   // field props
-  let { hint, id, label, description } = props;
+  let { hint, label, description } = props;
   // validation props
   let { required } = props;
   // event props
   let { onBlur, onChange, onFocus } = props;
   // error
   let error = props.error || state.error;
+  // field id
+  let id = props.id || uuid.v1();
 
   // attributes for the Field
   let fieldAttrs = {
