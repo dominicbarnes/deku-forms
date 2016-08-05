@@ -1,4 +1,9 @@
 
+1.7.0 / 2016-08-04
+==================
+
+  * automatically generate an id when one is not specified (for accessibility)
+
 1.6.1 / 2016-07-30
 ==================
 
