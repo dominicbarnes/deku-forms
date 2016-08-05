@@ -22,21 +22,6 @@ describe('InputField', function () {
     assert.node.isNode(input, 'input');
   });
 
-  describe('given type=file', function () {
-    describe('with accept=XXX', function () {
-      it('should add the attribute', function () {
-        let node = mock.render({
-          props: {
-            type: 'file',
-            accept: 'image/*'
-          }
-        });
-        let input = node.children[0];
-        assert.node.hasAttribute(input, 'accept', 'image/*');
-      });
-    });
-  });
-
   it('should generate an id when one is not specified', function () {
     let node = mock.render();
     let input = node.children[0];
@@ -45,6 +30,7 @@ describe('InputField', function () {
 
   describe('with props', function () {
     let inputAttrs = {
+      accept: 'image/*',
       autofocus: true,
       disabled: true,
       max: 50,
